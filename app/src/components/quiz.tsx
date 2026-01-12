@@ -7,7 +7,7 @@ export function Quiz() {
   return (
     <>
       {!isLoading ? (
-        <ul>
+        <div>
           {data!.map(q => (
             <li key={q.id}>
               <QuizCard 
@@ -15,7 +15,7 @@ export function Quiz() {
               />
             </li>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>Loading...</p>
       )}

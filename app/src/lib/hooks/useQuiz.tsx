@@ -21,7 +21,7 @@ type CreatequizInput = {
   title: string
   tag: string
   level: string
-  mistakeReason: string
+  explanation: string
   choices: {
     text: string
     isCorrect: boolean

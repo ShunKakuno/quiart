@@ -1,7 +1,6 @@
 import type { Choice } from "@/lib/types/quiz"
 import { ChoiceCard } from "@/components/card/choiceCard"
-
-
+import './css/ChoiceGrid.css'
 
 type Props = {
   choices: Choice[]
@@ -12,15 +11,15 @@ type Props = {
 
 export function ChoiceGrid({ choices, selected, correctId, onSelect }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="choice-grid">
       {choices.map(c => (
         <ChoiceCard
           key={c.id}
           choice={c}
-          isSelected={selected === c.id}
-          isCorrect={c.id === correctId}
+          isSelected={selected === c.selectId}
+          isCorrect={c.selectId === correctId}
           showResult={selected !== null}
-          onClick={() => onSelect(c.id)}
+          onClick={() => onSelect(c.selectId)}
         />
       ))}
     </div>

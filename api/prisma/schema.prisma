@@ -13,7 +13,7 @@ model Quiz {
   title         String
   tag           String
   level         String
-  mistakeReason String
+  explanation   String
   categories    String[]
   correctQuizId String
   createdAt     DateTime  @default(now())
@@ -24,6 +24,7 @@ model Quiz {
 model Choice {
   id         String   @id @default(cuid())
   quizId     String
+  selectId   String
   text       String
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
