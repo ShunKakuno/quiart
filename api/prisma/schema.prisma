@@ -8,24 +8,25 @@ generator client {
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
-model Question {
+model Quiz {
   id            String    @id
   title         String
   tag           String
   level         String
   mistakeReason String
   choices       Choice[]
+  categories    String[]
   createdAt     DateTime  @default(now())
 }
 
 model Choice {
   id         String   @id @default(cuid())
-  questionId String
+  quizId String
   text       String
   isCorrect  Boolean
   index      Int
 
-  question   Question @relation(fields: [questionId], references: [id])
+  quiz   Quiz @relation(fields: [quizId], references: [id])
 
-  @@unique([questionId, index])
+  @@unique([quizId, index])
 }

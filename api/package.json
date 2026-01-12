@@ -4,6 +4,7 @@
     "hono": "^4.11.3"
   },
   "devDependencies": {
+    "@types/node": "^25.0.6",
     "prisma": "^6.19.1"
   }
 }

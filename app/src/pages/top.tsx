@@ -1,15 +1,10 @@
-// src/pages/Top.tsx
-import { useNavigate } from 'react-router-dom'
-
+import { Quiz } from '@/components/quiz'
 export default function Top() {
-  const navigate = useNavigate()
 
   return (
     <div>
       <h1>エンジニア理解度チェック</h1>
-      <button onClick={() => navigate('/quiz')}>a
-        まず5問解いてください（3分）
-      </button>
+      <Quiz />
     </div>
   )
 }
