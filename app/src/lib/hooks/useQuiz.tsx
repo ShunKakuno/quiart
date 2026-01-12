@@ -1,26 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { api } from "@/lib/api"
-
-/**
- * Prismaのモデルと一致させる
- */
-export type Choice = {
-  id: string
-  quizId: string
-  text: string
-  isCorrect: boolean
-  index: number
-}
-
-export type Quiz = {
-  id: string
-  title: string
-  tag: string
-  level: string
-  mistakeReason: string
-  choices: Choice[]
-  createdAt: string // APIはISO文字列で来る
-}
+import type { Quiz } from "@/lib/types/quiz"
 
 /**
  * GET /quiz
@@ -45,7 +25,6 @@ type CreatequizInput = {
   choices: {
     text: string
     isCorrect: boolean
-    index: number
   }[]
 }
 

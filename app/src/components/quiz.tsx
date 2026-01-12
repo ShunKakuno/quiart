@@ -1,4 +1,5 @@
-import { useQuiz } from "@/features/quiz/useQuiz"
+import { useQuiz } from "@/lib/hooks/useQuiz"
+import { QuizCard } from "@/components/card/quizCard"
 
 export function Quiz() {
   const { data, isLoading } = useQuiz()
@@ -9,7 +10,9 @@ export function Quiz() {
         <ul>
           {data!.map(q => (
             <li key={q.id}>
-              {q.title} ({q.tag})
+              <QuizCard 
+                quiz={q}
+              />
             </li>
           ))}
         </ul>

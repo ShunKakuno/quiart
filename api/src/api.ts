@@ -16,8 +16,17 @@ app.use(
   })
 )
 
-app.get('/quiz', async c => {
-  const quiz = await prisma.quiz.findMany()
+app.get("/quiz", async c => {
+  const quiz = await prisma.quiz.findMany({
+    where: {
+      choices: {
+        some: {}
+      }
+    },
+    include: {
+      choices: true
+    }
+  })
   return c.json(quiz)
 })
 

@@ -14,19 +14,17 @@ model Quiz {
   tag           String
   level         String
   mistakeReason String
-  choices       Choice[]
   categories    String[]
+  correctQuizId String
   createdAt     DateTime  @default(now())
+
+  choices       Choice[]
 }
 
 model Choice {
   id         String   @id @default(cuid())
-  quizId String
+  quizId     String
   text       String
-  isCorrect  Boolean
-  index      Int
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
-
-  @@unique([quizId, index])
 }
