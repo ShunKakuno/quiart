@@ -1,0 +1,134 @@
+/* 全体コンテナ */
+.article-container {
+  max-width: 600px; /* 少し狭めて中央揃え */
+  margin: 40px auto;
+  padding: 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+  color: #111827;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column; /* 内部アイテムを縦に整列 */
+  align-items: stretch;   /* 子要素をコンテナ幅いっぱいに */
+}
+
+.article-input,
+.article-textarea,
+.tags-input {
+  width: 100%;
+  box-sizing: border-box; /* padding込みで幅100% */
+}
+
+/* タイトル */
+.article-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* タイトル入力 */
+.article-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+}
+
+/* 本文 */
+.article-textarea {
+  width: 100%;
+  height: 250px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+/* タグ入力ボックス */
+.tags-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* タグ入力フィールド */
+.tags-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* タグリスト */
+.tags-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-height: 36px;
+  justify-content: flex-start;
+}
+
+/* タグチップ */
+.tags-chip {
+  background: #3b82f6; /* 明るめ青 */
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.tags-chip:hover {
+  background: #2563eb;
+}
+
+/* 最大5個タグの場合のグリッドも可 */
+.tags-list > span:nth-child(n+6) {
+  display: none;
+}
+
+/* 投稿ボタン */
+.article-button {
+  width: 100%;
+  padding: 12px;
+  background: #10b981; /* 緑アクセント */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.article-button:hover {
+  background: #059669;
+}
+
+/* 成功・エラー表示 */
+.article-success {
+  color: #10b981;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.article-error {
+  color: #ef4444;
+  margin-top: 12px;
+  font-weight: bold;
+}

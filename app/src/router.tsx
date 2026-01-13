@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Top } from "@/pages/top"
+import { Quiz } from "@/pages/quiz"
+import { PostArticle } from "@/pages/postArticle"
 import { AppLayout } from "@/appLayout"
 
 export const Router = () => (
   <BrowserRouter>
     <Routes>
-      {/* 外枠 */}
       <Route element={<AppLayout />}>
         <Route path="/" element={<Top />} />
-        {/* 今後ここに増やす */}
-        {/* <Route path="/quiz" element={<Quiz />} /> */}
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/article" element={<PostArticle />} />
       </Route>
     </Routes>
   </BrowserRouter>

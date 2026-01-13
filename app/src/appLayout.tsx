@@ -11,9 +11,9 @@ export function AppLayout() {
       <div className="body">
         <aside className="sidebar">
           <nav>
-            <a href="/">Home</a>
-            <a href="/quiz">Quiz</a>
-            <a href="/admin">Admin</a>
+            <a href="/">トップ</a>
+            <a href="/quiz">クイズ一覧</a>
+            <a href="/article">ブログ記事</a>
           </nav>
         </aside>
 

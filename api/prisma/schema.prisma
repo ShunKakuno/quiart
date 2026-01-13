@@ -29,3 +29,13 @@ model Choice {
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
 }
+
+model Article {
+  id         String   @id @default(cuid())
+  qiitaId    String?
+  content    String
+  title      String
+  tags       String[]
+  createdAt  DateTime  @default(now())
+  deleted    String @default("0")
+}
