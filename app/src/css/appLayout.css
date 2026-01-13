@@ -1,0 +1,68 @@
+/* 全体 */
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  color: #0f172a;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ヘッダー */
+.header {
+  height: 64px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #6366f1; /* インディゴ */
+}
+
+/* 中身 */
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* サイドバー */
+.sidebar {
+  width: 240px;
+  background: #eef2ff;
+  border-right: 1px solid #e0e7ff;
+  padding: 20px 12px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar a {
+  color: #4338ca;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  background: rgba(255,255,255,0.7);
+}
+
+.sidebar a:hover {
+  background: #6366f1;
+  color: white;
+  transform: translateX(4px);
+}
+
+.content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}

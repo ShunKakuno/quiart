@@ -1,5 +1,5 @@
 import type { Choice } from "@/lib/types/quiz"
-import './css/ChoiceCard.css'
+import "@/css/ChoiceCard.css"
 
 type Props = {
   choice: Choice

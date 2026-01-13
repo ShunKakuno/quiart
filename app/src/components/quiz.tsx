@@ -9,11 +9,11 @@ export function Quiz() {
       {!isLoading ? (
         <div>
           {data!.map(q => (
-            <li key={q.id}>
+            <div key={q.id}>
               <QuizCard 
                 quiz={q}
               />
-            </li>
+            </div>
           ))}
         </div>
       ) : (
