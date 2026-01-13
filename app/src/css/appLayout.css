@@ -66,3 +66,10 @@
   padding: 32px;
   overflow-y: auto;
 }
+
+.loading {
+  text-align: center;
+  padding: 32px;
+  font-size: 1rem;
+  color: #666;
+}

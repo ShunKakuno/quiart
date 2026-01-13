@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
+
 import "@/css/appLayout.css"
 
 export function AppLayout() {
@@ -11,9 +12,10 @@ export function AppLayout() {
       <div className="body">
         <aside className="sidebar">
           <nav>
-            <a href="/">トップ</a>
-            <a href="/quiz">クイズ一覧</a>
-            <a href="/article">ブログ記事</a>
+            <Link to="/">トップ</Link>
+            <Link to="/quiz">クイズ一覧</Link>
+            <Link to="/articleList">ブログ記事一覧</Link>
+            <Link to="/postArticle">ブログ記事作成</Link>
           </nav>
         </aside>
 

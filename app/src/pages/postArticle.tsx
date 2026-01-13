@@ -22,7 +22,7 @@ export function PostArticle() {
 
   return (
     <div className="article-container">
-      <h1 className="article-title">記事を書く</h1>
+      <h1 className="article-title">記事作成</h1>
 
       <input
         className="article-input"

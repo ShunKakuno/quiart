@@ -37,9 +37,17 @@ api.post('/quiz', async c => {
   return c.json(q)
 })
 
-api.get("/article", async c => {
-  const article = await prisma.article.findMany()
+api.get("/article/:id", async c => {
+  const id = c.req.param("id")
+  const article = await prisma.article.findUnique({
+    where: { id },
+  })
   return c.json(article)
+})
+
+api.get("/articleList", async c => {
+  const articleList = await prisma.article.findMany()
+  return c.json(articleList)
 })
 
 type QiitaItem = {

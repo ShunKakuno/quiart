@@ -1,0 +1,103 @@
+/* ---------- 共通設定 ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- ローディング ---------- */
+.loading {
+  text-align: center;
+  padding: 32px;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* ---------- 記事一覧 ---------- */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.article-card {
+  display: block; /* Linkをブロックにする */
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit; /* リンク色を無効化 */
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.article-title {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.article-date {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.article-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+/* ---------- 個別記事ページ ---------- */
+.article-detail {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.article-content {
+  margin-top: 16px;
+  line-height: 1.6;
+  white-space: pre-line; /* 改行を反映 */
+}
+
+.article-detail .article-title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.article-detail .article-date {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.article-detail .article-tags .tag {
+  font-size: 0.75rem;
+  background-color: #e0f0ff;
+  color: #0366d6;
+}
