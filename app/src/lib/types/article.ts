@@ -5,5 +5,6 @@ export type Article = {
   title: string
   tags: string[]
   createdAt: string
+  updatedAt: string
   deleted: string
 }
