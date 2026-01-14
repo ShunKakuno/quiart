@@ -7,14 +7,6 @@ body {
   padding: 0;
 }
 
-/* ---------- ローディング ---------- */
-.loading {
-  text-align: center;
-  padding: 32px;
-  font-size: 1rem;
-  color: #666;
-}
-
 /* ---------- 記事一覧 ---------- */
 .article-list {
   display: flex;

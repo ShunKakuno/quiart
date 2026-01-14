@@ -20,7 +20,7 @@ export function ArticleList() {
             >
               <h2 className="article-title">{article.title}</h2>
               <p className="article-date">
-                作成日: {new Date(article.createdAt).toLocaleDateString()}
+                更新日: {article.updatedAt.slice(0, 10).replace(/\//g, "年").replace("年", "年").replace("年", "年")}
               </p>
               {article.tags.length > 0 && (
                 <div className="article-tags">

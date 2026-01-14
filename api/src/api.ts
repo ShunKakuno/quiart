@@ -46,7 +46,12 @@ api.get("/article/:id", async c => {
 })
 
 api.get("/articleList", async c => {
-  const articleList = await prisma.article.findMany()
+  const articleList = await prisma.article.findMany({
+    orderBy: {
+      updatedAt: "desc",
+    },
+  }
+  )
   return c.json(articleList)
 })
 
@@ -103,6 +108,5 @@ api.post("/article", async c => {
     return c.json({ error: String(e) }, 500)
   }
 })
-
 
 export default app
