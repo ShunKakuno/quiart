@@ -1,5 +1,6 @@
 import { useQuiz } from "@/lib/hooks/useQuiz"
 import { QuizCard } from "@/components/card/quizCard"
+import "@/css/quiz.css"
 
 export function Quiz() {
   const { data, isLoading } = useQuiz()
@@ -9,7 +10,7 @@ export function Quiz() {
       {!isLoading ? (
         <div>
           {data!.map(q => (
-            <div key={q.id}>
+            <div className="quiz-grid" key={q.id}>
               <QuizCard 
                 quiz={q}
               />
