@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Quiz } from "@/lib/types/quiz"
 import { ChoiceGrid } from "@/components/grid/choiceGrid"
-import "@/css/QuizCard.css"
+import "@/css/quizCard.css"
 
 type Props = {
   quiz: Quiz

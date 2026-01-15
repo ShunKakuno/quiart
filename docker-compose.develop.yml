@@ -25,9 +25,16 @@ services:
       - ./api/.env
     depends_on:
       - postgres
-    volumes:
-      - ./api:/app
     command: bun run src/api.ts
+
+  app:
+    build: ./app
+    container_name: quiz_app
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./app/.env
+    command: npm run dev -- --host
 
 volumes:
   postgres_data:

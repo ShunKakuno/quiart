@@ -1,6 +1,6 @@
 import type { Choice } from "@/lib/types/quiz"
 import { ChoiceCard } from "@/components/card/choiceCard"
-import "@/css/ChoiceGrid.css"
+import "@/css/choiceGrid.css"
 
 type Props = {
   choices: Choice[]
