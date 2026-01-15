@@ -3,6 +3,7 @@ export type Choice = {
   quizId: string
   selectId: string
   text: string
+  selected: number
 }
 
 export type Quiz = {
