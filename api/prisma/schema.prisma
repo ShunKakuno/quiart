@@ -27,6 +27,7 @@ model Choice {
   quizId     String
   selectId   String
   text       String
+  selected      Int
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
 }

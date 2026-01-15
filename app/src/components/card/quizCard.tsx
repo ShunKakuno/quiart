@@ -13,6 +13,13 @@ export function QuizCard({ quiz }: Props) {
 
   const isCorrect = selected === quiz.correctQuizId
 
+  const totalSelected = quiz.choices.reduce(
+    (sum, c) => sum + c.selected,
+    0
+  )
+
+  const correctRateRounded = Math.round((quiz.choices[Number(quiz.correctQuizId)].selected / totalSelected) * 100)
+
   const handleSelect = (id: string) => {
     setSelected(id)
     setShowExplanation(false) // 選び直したら解説を閉じる
@@ -43,9 +50,20 @@ export function QuizCard({ quiz }: Props) {
           </button>
 
           {showExplanation && (
-            <div className="explanation">
-              {quiz.explanation}
-            </div>
+            <>
+              <div className="explanation">
+                {quiz.explanation}
+              </div>
+              <div className="correct-rate-wrap">
+                <div
+                  className="rate-circle"
+                  style={{ ["--rate" as any]: correctRateRounded }}
+                >
+                  <span className="rate-text">{correctRateRounded}%</span>
+                </div>
+                <div className="rate-label">正解率</div>
+              </div>
+            </>
           )}
         </>
       )}
