@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { usePostArticle } from "@/lib/hooks/usePostArticle"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import "@/css/postArticle.css"
+import "@/css/article.css"
 
 export function PostArticle() {
   const [title, setTitle] = useState("")
@@ -17,7 +20,7 @@ export function PostArticle() {
   }
 
   const removetags = (t: string) => {
-    setTagss(tags.filter(tags => tags !== t))
+    setTagss(tags.filter(tag => tag !== t))
   }
 
   return (
@@ -31,14 +34,30 @@ export function PostArticle() {
         onChange={e => setTitle(e.target.value)}
       />
 
-      <textarea
-        className="article-textarea"
-        placeholder="本文（Markdown可）"
-        value={body}
-        onChange={e => setBody(e.target.value)}
-      />
+      {/* ===== エディタ + プレビュー ===== */}
+      <div className="editor-wrapper">
+        <textarea
+          className="article-textarea"
+          placeholder="本文（Markdown可）"
+          value={body}
+          onChange={e => setBody(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault()
+              setBody(prev => prev + "  \n")
+            }
+          }}
+        />
+        <div className="article-preview">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+          >
+            {body || "ここにプレビューが表示されます"}
+          </ReactMarkdown>
+        </div>
+      </div>
 
-      {/* タグ入力 */}
+      {/* ===== タグ入力 ===== */}
       <div className="tags-box">
         <input
           className="tags-input"
