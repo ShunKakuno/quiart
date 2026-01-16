@@ -1,18 +1,3 @@
-/* 全体コンテナ */
-.article-container {
-  max-width: 600px; /* 少し狭めて中央揃え */
-  margin: 40px auto;
-  padding: 24px;
-  background: #f9fafb;
-  border-radius: 12px;
-  color: #111827;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  flex-direction: column; /* 内部アイテムを縦に整列 */
-  align-items: stretch;   /* 子要素をコンテナ幅いっぱいに */
-}
-
 .article-input,
 .article-textarea,
 .tags-input {
@@ -131,4 +116,63 @@
   color: #ef4444;
   margin-top: 12px;
   font-weight: bold;
+}
+
+.editor-wrapper {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.article-textarea {
+  width: 50%;
+  min-height: 400px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.article-preview {
+  width: 50%;
+  min-height: 400px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+/* 本番と同じ見た目にする */
+.article-preview {
+  composes: article-container;
+}
+
+@media (min-width: 1024px) {
+  .editor-wrapper {
+    flex-direction: row;
+  }
+
+  .article-textarea,
+  .article-preview {
+    width: 50%;
+    min-height: 500px;
+  }
+}
+
+.article-container table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.article-container th,
+.article-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.article-container th {
+  background: #f5f5f5;
 }
