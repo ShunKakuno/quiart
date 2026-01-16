@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import { useArticle } from "@/lib/hooks/useArticle"
 import "@/css/article.css"
 
@@ -22,10 +24,10 @@ export function Article() {
           ))}
         </div>
       )}
-      <div className="article-content">
-        {article.content.split("\n").map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
+      <div className="article-content markdown">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {article.content}
+        </ReactMarkdown>
       </div>
     </div>
   )
