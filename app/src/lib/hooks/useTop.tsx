@@ -3,11 +3,11 @@ import { api } from "@/lib/api"
 import type { Quiz } from "@/lib/types/quiz"
 import type { Article } from "@/lib/types/article"
 
-export function useDailyQuiz() {
+export function useLatestQuiz() {
 
   return useQuery({
-    queryKey: ["Dailyquiz"],
-    queryFn: () => api<Quiz[]>("/quiz"),
+    queryKey: ["latestquiz"],
+    queryFn: () => api<Quiz[]>("/latestQuiz"),
   })
 }
 

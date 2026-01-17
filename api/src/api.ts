@@ -47,6 +47,25 @@ api.get("/quizList", async c => {
   return c.json(quizList)
 })
 
+api.get("/latestQuiz", async c => {
+  const quizList = await prisma.quiz.findMany({
+    where: {
+      choices: {
+        some: {}
+      }
+    },
+    include: {
+      choices: true
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 5
+  }
+  )
+  return c.json(quizList)
+})
+
 api.get("/quiz/:id", async c => {
   const id = c.req.param("id")
   const quiz = await prisma.quiz.findUnique({
