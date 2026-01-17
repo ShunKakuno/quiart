@@ -1,8 +1,9 @@
-import { useQuiz } from "@/lib/hooks/useQuiz"
+import { useTop } from "@/lib/hooks/useTop"
 import { QuizCard } from "@/components/card/quizCard"
+import "@/css/top.css"
 
 export function Top() {
-  const { data, isLoading } = useQuiz()
+  const { data, isLoading } = useTop()
 
   return (
     <div>
@@ -10,7 +11,7 @@ export function Top() {
       {!isLoading ? (
         <div>
           {data!.map(q => (
-            <div key={q.id}>
+            <div key={q.id} className="quiz-grid">
               <QuizCard 
                 quiz={q}
               />

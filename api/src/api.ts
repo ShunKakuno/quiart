@@ -37,6 +37,43 @@ api.post('/quiz', async c => {
   return c.json(q)
 })
 
+api.get("/quizList", async c => {
+  const quizList = await prisma.quiz.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  }
+  )
+  return c.json(quizList)
+})
+
+api.get("/quiz/:id", async c => {
+  const id = c.req.param("id")
+  const quiz = await prisma.quiz.findUnique({
+    where: { id },
+    include: {
+      choices: true,
+    },
+  })
+  if (!quiz) {
+    return c.json({ error: "Quiz not found" }, 404)
+  }
+  return c.json(quiz)
+})
+
+api.post("/quiz/:id/view", async (c) => {
+  const id = c.req.param("id")
+
+  await prisma.quiz.update({
+    where: { id },
+    data: {
+      view: { increment: 1 },
+    },
+  })
+
+  return c.json({ ok: true })
+})
+
 api.get("/article/:id", async c => {
   const id = c.req.param("id")
   const article = await prisma.article.findUnique({

@@ -13,16 +13,22 @@ export function QuizCard({ quiz }: Props) {
 
   const isCorrect = selected === quiz.correctQuizId
 
-  const totalSelected = quiz.choices.reduce(
-    (sum, c) => sum + c.selected,
-    0
-  )
+const totalSelected =
+  quiz.choices?.reduce((sum, c) => sum + c.selected, 0) ?? 0
 
-  const correctRateRounded = Math.round((quiz.choices[Number(quiz.correctQuizId)].selected / totalSelected) * 100)
+const correctChoice = quiz.choices?.find(
+  c => c.selectId === quiz.correctQuizId
+)
+
+const correctRateRounded =
+  totalSelected > 0 && correctChoice
+    ? Math.round((correctChoice.selected / totalSelected) * 100)
+    : 0
+
 
   const handleSelect = (id: string) => {
     setSelected(id)
-    setShowExplanation(false) // 選び直したら解説を閉じる
+    setShowExplanation(false)
   }
 
   return (
@@ -42,6 +48,7 @@ export function QuizCard({ quiz }: Props) {
             <span className="icon">{isCorrect ? "⭕" : "✖️"}</span>
             <span className="text">{isCorrect ? "正解！" : "不正解"}</span>
           </div>
+
           <button
             className="explanation-button"
             onClick={() => setShowExplanation(prev => !prev)}
@@ -51,9 +58,8 @@ export function QuizCard({ quiz }: Props) {
 
           {showExplanation && (
             <>
-              <div className="explanation">
-                {quiz.explanation}
-              </div>
+              <div className="explanation">{quiz.explanation}</div>
+
               <div className="correct-rate-wrap">
                 <div
                   className="rate-circle"
@@ -70,3 +76,4 @@ export function QuizCard({ quiz }: Props) {
     </div>
   )
 }
+
