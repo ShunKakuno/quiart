@@ -45,6 +45,19 @@ api.get("/article/:id", async c => {
   return c.json(article)
 })
 
+api.post("/article/:id/view", async (c) => {
+  const id = c.req.param("id")
+
+  await prisma.article.update({
+    where: { id },
+    data: {
+      view: { increment: 1 },
+    },
+  })
+
+  return c.json({ ok: true })
+})
+
 api.get("/articleList", async c => {
   const articleList = await prisma.article.findMany({
     orderBy: {

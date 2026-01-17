@@ -7,4 +7,5 @@ export type Article = {
   createdAt: string
   updatedAt: string
   deleted: string
+  view: number
 }
