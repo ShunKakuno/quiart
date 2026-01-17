@@ -1,46 +1,44 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { api } from "@/lib/api"
 import type { Quiz } from "@/lib/types/quiz"
+import type { Article } from "@/lib/types/article"
 
-/**
- * GET /quiz
- */
-export function useTop() {
+export function useDailyQuiz() {
 
   return useQuery({
-    queryKey: ["quiz"],
+    queryKey: ["Dailyquiz"],
     queryFn: () => api<Quiz[]>("/quiz"),
   })
 }
 
-/**
- * POST /quiz
- */
-type CreatequizInput = {
-  id: string
-  title: string
-  tag: string
-  level: string
-  explanation: string
-  choices: {
-    text: string
-    isCorrect: boolean
-  }[]
+export function usePopularQuizRanking() {
+
+  return useQuery({
+    queryKey: ["popularQuizRanking"],
+    queryFn: () => api<Quiz[]>("/popularQuizRanking"),
+  })
 }
 
-export function useCreatequiz() {
-  const qc = useQueryClient()
+export function useUnpopularQuizRanking() {
 
-  return useMutation({
-    mutationFn: (data: CreatequizInput) =>
-      api<Quiz>("/quiz", {
-        method: "POST",
-        body: JSON.stringify(data),
-      }),
+  return useQuery({
+    queryKey: ["unpopularQuizRanking"],
+    queryFn: () => api<Quiz[]>("/unpopularQuizRanking"),
+  })
+}
 
-    // 追加成功したら一覧を自動更新
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["quiz"] })
-    },
+export function usePopularArticleRanking() {
+
+  return useQuery({
+    queryKey: ["popularArticleRanking"],
+    queryFn: () => api<Article[]>("/popularArticleRanking"),
+  })
+}
+
+export function useUnpopularArticleRanking() {
+
+  return useQuery({
+    queryKey: ["unpopularArticleRanking"],
+    queryFn: () => api<Article[]>("/unpopularArticleRanking"),
   })
 }

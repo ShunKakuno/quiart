@@ -6,7 +6,7 @@ export function AppLayout() {
   return (
     <div className="app">
       <header className="header">
-        <div className="logo">My Quiz App</div>
+        <div className="logo">eHZ</div>
       </header>
 
       <div className="body">

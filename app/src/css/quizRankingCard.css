@@ -1,0 +1,40 @@
+.quiz-ranking-card {
+  display: block;
+  height: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-ranking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.quiz-ranking-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.quiz-ranking-description {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.quiz-ranking-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-ranking-meta {
+  font-size: 0.8rem;
+  color: #888;
+}
