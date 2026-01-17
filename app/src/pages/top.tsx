@@ -1,5 +1,5 @@
 import { 
-  useDailyQuiz, 
+  useLatestQuiz, 
   usePopularQuizRanking, 
   useUnpopularQuizRanking, 
   usePopularArticleRanking, 
@@ -11,7 +11,7 @@ import { QuizRanking } from "@/components/ranking/QuizRanking"
 import "@/css/top.css"
 
 export function Top() {
-  const { data: dailyQuizData, isLoading: isDailyQuizLoading } = useDailyQuiz()
+  const { data: latestQuizData, isLoading: isLatestQuizLoading } = useLatestQuiz()
   const { data: popularQuizRankingData, isLoading: isPopularQuizRankingLoading } = usePopularQuizRanking()
   const { data: unpopularQuizRankingData, isLoading: isUnpopularQuizRankingLoading } = useUnpopularQuizRanking()
   const { data: popularArticleRankingData, isLoading: isPopularArticleRankingLoading } = usePopularArticleRanking()
@@ -19,10 +19,10 @@ export function Top() {
 
   return (
     <div>
-      <h1>今日のクイズ</h1>
-      {!isDailyQuizLoading ? (
+      <h1>最新のクイズ</h1>
+      {!isLatestQuizLoading ? (
         <div>
-          {dailyQuizData!.map(q => (
+          {latestQuizData!.map(q => (
             <div key={q.id} className="quiz-grid">
               <QuizCard 
                 quiz={q}
