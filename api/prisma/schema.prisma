@@ -18,6 +18,7 @@ model Quiz {
   correctQuizId String
   createdAt     DateTime  @default(now())
   deleted       String @default("0")
+  view          Int @default(0)
 
   choices       Choice[]
 }

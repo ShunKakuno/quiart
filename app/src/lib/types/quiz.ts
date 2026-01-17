@@ -14,5 +14,6 @@ export type Quiz = {
   explanation: string
   createdAt: string
   correctQuizId: string
+  view: number
   choices: Choice[]
 }

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Top } from "@/pages/top"
+import { QuizList } from "@/pages/quizList"
 import { Quiz } from "@/pages/quiz"
 import { ArticleList } from "@/pages/articleList"
 import { Article } from "@/pages/article"
@@ -11,7 +12,8 @@ export const Router = () => (
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<Top />} />
-        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz" element={<QuizList />} />
+        <Route path="/quiz/:id" element={<Quiz />} />
         <Route path="/articleList" element={<ArticleList />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/postArticle" element={<PostArticle />} />

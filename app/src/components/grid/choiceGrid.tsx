@@ -3,13 +3,18 @@ import { ChoiceCard } from "@/components/card/choiceCard"
 import "@/css/choiceGrid.css"
 
 type Props = {
-  choices: Choice[]
+  choices?: Choice[]          // ← optional にする
   selected: string | null
   correctId: string
   onSelect: (id: string) => void
 }
 
-export function ChoiceGrid({ choices, selected, correctId, onSelect }: Props) {
+export function ChoiceGrid({
+  choices = [],               // ← デフォルト空配列
+  selected,
+  correctId,
+  onSelect,
+}: Props) {
   return (
     <div className="choice-grid">
       {choices.map(c => (
