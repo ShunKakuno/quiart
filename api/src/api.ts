@@ -74,6 +74,26 @@ api.post("/quiz/:id/view", async (c) => {
   return c.json({ ok: true })
 })
 
+api.get("/popularQuizRanking", async c => {
+  const quizList = await prisma.quiz.findMany({
+    orderBy: {
+      view: "desc",
+    },
+    take: 3
+  })
+  return c.json(quizList)
+})
+
+api.get("/unpopularQuizRanking", async c => {
+  const quizList = await prisma.quiz.findMany({
+    orderBy: {
+      view: "asc",
+    },
+    take: 3,
+  })
+  return c.json(quizList)
+})
+
 api.get("/article/:id", async c => {
   const id = c.req.param("id")
   const article = await prisma.article.findUnique({
@@ -100,8 +120,27 @@ api.get("/articleList", async c => {
     orderBy: {
       updatedAt: "desc",
     },
-  }
-  )
+  })
+  return c.json(articleList)
+})
+
+api.get("/popularArticleRanking", async c => {
+  const articleList = await prisma.article.findMany({
+    orderBy: {
+      view: "desc",
+    },
+    take: 3
+  })
+  return c.json(articleList)
+})
+
+api.get("/unpopularArticleRanking", async c => {
+  const articleList = await prisma.article.findMany({
+    orderBy: {
+      view: "asc",
+    },
+    take: 3
+  })
   return c.json(articleList)
 })
 
