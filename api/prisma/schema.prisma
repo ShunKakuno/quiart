@@ -41,4 +41,5 @@ model Article {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @default(now())
   deleted    String @default("0")
+  view       Int @default(0)
 }
