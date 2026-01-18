@@ -5,6 +5,7 @@ import { Quiz } from "@/pages/quiz"
 import { ArticleList } from "@/pages/articleList"
 import { Article } from "@/pages/article"
 import { PostArticle } from "@/pages/postArticle"
+import { CreateQuiz } from "@/pages/createQuiz"
 import { AppLayout } from "@/appLayout"
 
 export const Router = () => (
@@ -17,6 +18,7 @@ export const Router = () => (
         <Route path="/articleList" element={<ArticleList />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/postArticle" element={<PostArticle />} />
+        <Route path="/createQuiz" element={<CreateQuiz />} />
       </Route>
     </Routes>
   </BrowserRouter>
