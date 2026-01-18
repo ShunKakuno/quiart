@@ -31,10 +31,28 @@ api.get("/quiz", async c => {
   return c.json(quiz)
 })
 
-api.post('/quiz', async c => {
-  const data = await c.req.json()
-  const q = await prisma.quiz.create({ data })
-  return c.json(q)
+api.post("/quiz", async (c) => {
+  const body = await c.req.json()
+
+  const quiz = await prisma.quiz.create({
+    data: {
+      title: body.title,
+      tag: body.tag,
+      level: body.level,
+      explanation: body.explanation,
+      categories: body.categories,
+      correctQuizId: body.correctQuizId,
+      choices: {
+        create: body.choices.map((c: any) => ({
+          selectId: c.selectId,
+          text: c.text,
+          selected: 0,
+        })),
+      },
+    },
+  })
+
+  return c.json(quiz)
 })
 
 api.get("/quizList", async c => {
@@ -67,7 +85,7 @@ api.get("/latestQuiz", async c => {
 })
 
 api.get("/quiz/:id", async c => {
-  const id = c.req.param("id")
+  const id = Number(c.req.param("id"))
   const quiz = await prisma.quiz.findUnique({
     where: { id },
     include: {
@@ -81,7 +99,7 @@ api.get("/quiz/:id", async c => {
 })
 
 api.post("/quiz/:id/view", async (c) => {
-  const id = c.req.param("id")
+  const id = Number(c.req.param("id"))
 
   await prisma.quiz.update({
     where: { id },
@@ -92,6 +110,7 @@ api.post("/quiz/:id/view", async (c) => {
 
   return c.json({ ok: true })
 })
+
 
 api.get("/popularQuizRanking", async c => {
   const quizList = await prisma.quiz.findMany({

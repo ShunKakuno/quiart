@@ -9,7 +9,7 @@ generator client {
 }
 
 model Quiz {
-  id            String    @id
+  id            Int @id @default(autoincrement())
   title         String
   tag           String
   level         String
@@ -24,11 +24,11 @@ model Quiz {
 }
 
 model Choice {
-  id         String   @id @default(cuid())
-  quizId     String
+  id         Int   @id @default(autoincrement())
+  quizId     Int
   selectId   String
   text       String
-  selected      Int
+  selected   Int
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
 }
