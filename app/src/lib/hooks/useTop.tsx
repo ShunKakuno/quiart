@@ -11,6 +11,14 @@ export function useLatestQuiz() {
   })
 }
 
+export function useLatestArticle() {
+
+  return useQuery({
+    queryKey: ["latestArticle"],
+    queryFn: () => api<Article[]>("/latestArticle"),
+  })
+}
+
 export function usePopularQuizRanking() {
 
   return useQuery({
