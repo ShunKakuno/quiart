@@ -1,0 +1,66 @@
+/* 管理者ログイン画面 */
+.admin-login {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 見出し */
+.admin-login h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* 入力欄 */
+.admin-login input {
+  width: 93%;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-login input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* ログインボタン */
+.admin-login button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.admin-login button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.admin-login button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* エラーメッセージ */
+.admin-login .error {
+  margin-top: 12px;
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+}

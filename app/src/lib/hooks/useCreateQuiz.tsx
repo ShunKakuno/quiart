@@ -8,7 +8,7 @@ export function useCreateQuiz() {
 
   return useMutation({
     mutationFn: (data: QuizCreateInput) =>
-      api<Quiz>("/quiz", {
+      api<Quiz>("/admin/quiz", {
         method: "POST",
         body: JSON.stringify(data),
       }),

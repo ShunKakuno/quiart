@@ -15,8 +15,6 @@ export function AppLayout() {
             <Link to="/">トップ</Link>
             <Link to="/quiz">クイズ一覧</Link>
             <Link to="/articleList">ブログ記事一覧</Link>
-            <Link to="/postArticle">ブログ記事作成</Link>
-            <Link to="/createQuiz">クイズ作成</Link>
           </nav>
         </aside>
 

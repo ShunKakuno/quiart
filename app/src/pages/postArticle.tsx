@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import { usePostArticle } from "@/lib/hooks/usePostArticle"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -6,6 +7,9 @@ import "@/css/postArticle.css"
 import "@/css/article.css"
 
 export function PostArticle() {
+  const { data: admin, isLoading } = useAdminDashboard()
+  if (isLoading) return <p>読み込み中...</p>
+  if (!admin) return <p>ログインしてください</p>
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [tagsInput, setTagsInput] = useState("")

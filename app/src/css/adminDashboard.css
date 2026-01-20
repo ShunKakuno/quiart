@@ -1,0 +1,66 @@
+/* AdminDashboard 全体 */
+.admin-dashboard {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 見出し */
+.admin-dashboard h1 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: #333;
+  word-break: break-all;
+}
+
+/* リンク共通 */
+.admin-dashboard a {
+  display: block;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: #2563eb;
+  background: #f1f5ff;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.admin-dashboard a:hover {
+  background: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+/* ログアウトボタン */
+.admin-dashboard button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.admin-dashboard button:hover {
+  background: #dc2626;
+}
+
+.admin-dashboard button:active {
+  opacity: 0.9;
+}
+
+/* 読み込み中 */
+.admin-dashboard-loading {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 1.1rem;
+  color: #666;
+}
