@@ -10,7 +10,7 @@ type CreateArticleInput = {
 export function usePostArticle() {
   return useMutation({
     mutationFn: (data: CreateArticleInput) =>
-      api("/article", {
+      api("/admin/article", {
         method: "POST",
         body: JSON.stringify(data),
       }),

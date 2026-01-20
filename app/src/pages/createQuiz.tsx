@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { useCreateQuiz } from "@/lib/hooks/useCreateQuiz"
+import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import type { QuizCreateInput } from "@/lib/types/quizCreateInput"
 import "@/css/createQuiz.css"
 
 export function CreateQuiz() {
+  const { data: admin } = useAdminDashboard()
+  if (!admin) return <p>ログインしてください</p>
   const post = useCreateQuiz()
   const [form, setForm] = useState<QuizCreateInput>({
     title: "",

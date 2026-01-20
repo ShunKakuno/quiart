@@ -44,3 +44,20 @@ model Article {
   deleted    String @default("0")
   view       Int @default(0)
 }
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  sessions     AdminSession[] 
+}
+
+model AdminSession {
+  id        String   @id @default(cuid())
+  adminId   String
+  expiresAt DateTime
+
+  admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+}

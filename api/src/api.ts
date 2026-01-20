@@ -1,5 +1,8 @@
 import { Hono } from 'hono'
 import { cors } from "hono/cors"
+import bcrypt from "bcrypt"
+import { z } from "zod"
+import { Context } from "hono"
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -31,7 +34,7 @@ api.get("/quiz", async c => {
   return c.json(quiz)
 })
 
-api.post("/quiz", async (c) => {
+api.post("/admin/quiz", async (c) => {
   const body = await c.req.json()
 
   const quiz = await prisma.quiz.create({
@@ -186,7 +189,7 @@ type QiitaItem = {
   id: string
 }
 
-api.post("/article", async c => {
+api.post("/admin/article", async c => {
   try {
     const { title, body, tags } = await c.req.json() as {
       title: string
@@ -234,6 +237,84 @@ api.post("/article", async c => {
     console.error("POST /api/article crashed:", e)
     return c.json({ error: String(e) }, 500)
   }
+})
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+})
+
+api.post("/admin/login", async (c) => {
+  const body = loginSchema.parse(await c.req.json())
+  const { email, password } = body
+
+  const admin = await prisma.admin.findUnique({ where: { email } })
+  if (!admin) return c.text("Unauthorized", 401)
+
+  const ok = await bcrypt.compare(password, admin.passwordHash)
+  if (!ok) return c.text("Unauthorized", 401)
+
+  const session = await prisma.adminSession.create({
+    data: {
+      adminId: admin.id,
+      expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 8), // 8時間
+    },
+  })
+
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : ""
+
+  c.header(
+    "Set-Cookie",
+    `admin_session=${session.id}; HttpOnly; Path=/; Max-Age=28800; SameSite=None; Secure`
+  )
+
+  return c.json({ ok: true })
+})
+
+export async function requireAdmin(c: Context) {
+  const cookieHeader = c.req.header("cookie")
+  if (!cookieHeader) return null // ログインしていない
+
+  const match = cookieHeader.match(/admin_session=([^;]+)/)
+  const sessionId = match?.[1]
+  if (!sessionId) return null
+
+  const session = await prisma.adminSession.findUnique({
+    where: { id: sessionId },
+    include: { admin: true },
+  })
+
+  if (!session || session.expiresAt < new Date()) return null
+
+  return session.admin
+}
+
+api.post("/admin/logout", async (c) => {
+  const cookieHeader = c.req.header("cookie")
+  const match = cookieHeader?.match(/admin_session=([^;]+)/)
+  const sessionId = match?.[1]
+
+  if (sessionId) await prisma.adminSession.delete({ where: { id: sessionId } })
+
+  c.header("Set-Cookie", "admin_session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax")
+
+  return c.json({ ok: true })
+})
+
+api.get("/admin/me", async (c) => {
+  const admin = await requireAdmin(c)
+  if (!admin) {
+    return c.json({ error: "Unauthorized" }, 401)
+  }
+
+  return c.json(
+    { id: admin.id, email: admin.email },
+    {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    }
+  )
 })
 
 export default app
