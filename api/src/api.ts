@@ -165,6 +165,17 @@ api.get("/articleList", async c => {
   return c.json(articleList)
 })
 
+api.get("/latestArticle", async c => {
+  const articleList = await prisma.article.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 5
+  }
+  )
+  return c.json(articleList)
+})
+
 api.get("/popularArticleRanking", async c => {
   const articleList = await prisma.article.findMany({
     orderBy: {

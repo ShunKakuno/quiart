@@ -1,5 +1,6 @@
 import { 
   useLatestQuiz, 
+  useLatestArticle,
   usePopularQuizRanking, 
   useUnpopularQuizRanking, 
   usePopularArticleRanking, 
@@ -12,6 +13,7 @@ import "@/css/top.css"
 
 export function Top() {
   const { data: latestQuizData, isLoading: isLatestQuizLoading } = useLatestQuiz()
+  const { data: latestArticleData, isLoading: isLatestArticleLoading } = useLatestArticle()
   const { data: popularQuizRankingData, isLoading: isPopularQuizRankingLoading } = usePopularQuizRanking()
   const { data: unpopularQuizRankingData, isLoading: isUnpopularQuizRankingLoading } = useUnpopularQuizRanking()
   const { data: popularArticleRankingData, isLoading: isPopularArticleRankingLoading } = usePopularArticleRanking()
@@ -29,6 +31,19 @@ export function Top() {
               />
             </div>
           ))}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <h1>最新の記事</h1>
+        {!isLatestArticleLoading ? (
+        <div>
+            <div className="quiz-grid">
+              <ArticleRanking 
+                articles={latestArticleData || []}
+                isLoading={isLatestArticleLoading}
+              />
+            </div>
         </div>
       ) : (
         <p>Loading...</p>
