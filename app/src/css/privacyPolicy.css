@@ -1,0 +1,44 @@
+.privacy-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px 80px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.8;
+  color: #222;
+}
+
+.privacy-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e5e5e5;
+  padding-bottom: 12px;
+}
+
+.privacy-text {
+  margin-bottom: 32px;
+  color: #444;
+}
+
+.privacy-section {
+  margin-bottom: 32px;
+}
+
+.privacy-section h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.privacy-section p {
+  margin-bottom: 12px;
+}
+
+.privacy-section ul {
+  padding-left: 20px;
+}
+
+.privacy-section li {
+  margin-bottom: 8px;
+}

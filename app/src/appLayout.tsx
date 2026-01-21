@@ -6,11 +6,10 @@ export function AppLayout() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    console.log("入った")
     const el = document.querySelector(".content")
     el?.scrollTo(0, 0)
   }, [pathname])
-  console.log("pathname", pathname)
+
   return (
     <div className="app">
       <header className="header">

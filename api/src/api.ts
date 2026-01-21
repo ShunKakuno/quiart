@@ -143,6 +143,28 @@ api.get("/article/:id", async c => {
   return c.json(article)
 })
 
+api.get("/article-with-quiz/:id", async c => {
+  const articleId = Number(c.req.param("id"))
+
+  if (Number.isNaN(articleId)) {
+    return c.json({ error: "invalid article id" }, 400)
+  }
+
+  const quizzes = await prisma.quiz.findMany({
+    where: {
+      articleId,
+    },
+    include: {
+      choices: true,
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  })
+
+  return c.json(quizzes)
+})
+
 api.post("/article/:id/view", async (c) => {
   const id = c.req.param("id")
 

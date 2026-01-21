@@ -9,6 +9,7 @@ import { CreateQuiz } from "@/pages/createQuiz"
 import { AdminLogin } from "@/pages/adminLogin"
 import { AdminDashboard } from "@/pages/adminDashboard"
 import { TermsOfService } from "@/pages/termsOfService"
+import { PrivacyPolicy } from "@/pages/privacyPolicy"
 import { AppLayout } from "@/appLayout"
 
 export const Router = () => (
@@ -21,6 +22,7 @@ export const Router = () => (
         <Route path="/articleList" element={<ArticleList />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/admin/postArticle" element={<PostArticle />} />
         <Route path="/admin/createQuiz" element={<CreateQuiz />} />
         <Route path="/admin/login" element={<AdminLogin />} />
