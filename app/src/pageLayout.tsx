@@ -16,6 +16,7 @@ export function PageLayout({ children }: Props) {
         <p className="page-footer-copy">© eHZ</p>
         <nav className="page-footer-nav">
           <Link to="/terms-of-service">利用規約</Link>
+          <Link to="/privacy-policy">プライバシーポリシー</Link>
         </nav>
       </footer>
     </div>
