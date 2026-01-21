@@ -1,5 +1,6 @@
 import { useArticleList } from "@/lib/hooks/useArticleList"
 import { Link } from "react-router-dom"
+import { PageLayout } from "@/pageLayout"
 import "@/css/articleList.css"
 import type { Article as ArticleType } from "@/lib/types/article"
 
@@ -7,7 +8,7 @@ export function ArticleList() {
   const { data, isLoading } = useArticleList()
 
   return (
-    <>
+    <PageLayout>
       {isLoading ? (
         <p className="loading">Loading...</p>
       ) : (
@@ -33,6 +34,6 @@ export function ArticleList() {
           ))}
         </div>
       )}
-    </>
+    </PageLayout>
   )
 }

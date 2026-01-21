@@ -9,6 +9,7 @@ import {
 import { QuizCard } from "@/components/card/quizCard"
 import { ArticleRanking } from "@/components/ranking/ArticleRanking"
 import { QuizRanking } from "@/components/ranking/QuizRanking"
+import { PageLayout } from "@/pageLayout"
 import "@/css/top.css"
 
 export function Top() {
@@ -20,88 +21,90 @@ export function Top() {
   const { data: unpopularArticleRankingData, isLoading: isUnpopularArticleRankingLoading } = useUnpopularArticleRanking()
 
   return (
-    <div>
-      <h1>最新のクイズ</h1>
-      {!isLatestQuizLoading ? (
-        <div>
-          {latestQuizData!.map(q => (
-            <div key={q.id} className="quiz-grid">
-              <QuizCard 
-                quiz={q}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>最新の記事</h1>
-        {!isLatestArticleLoading ? (
-        <div>
-            <div className="quiz-grid">
-              <ArticleRanking 
-                articles={latestArticleData || []}
-                isLoading={isLatestArticleLoading}
-              />
-            </div>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>クイズアクセス数ランキング</h1>
-        {!isPopularQuizRankingLoading ? (
-        <div>
-          <div className="quiz-grid">
-            <QuizRanking 
-              quizzes={popularQuizRankingData || []}
-              isLoading={isPopularQuizRankingLoading}
-            />
+    <PageLayout>
+      <div>
+        <h1>最新のクイズ</h1>
+        {!isLatestQuizLoading ? (
+          <div>
+            {latestQuizData!.map(q => (
+              <div key={q.id} className="quiz-grid">
+                <QuizCard 
+                  quiz={q}
+                />
+              </div>
+            ))}
           </div>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>記事アクセス数ランキング</h1>
-        {!isPopularArticleRankingLoading ? (
-        <div>
-            <div className="quiz-grid">
-              <ArticleRanking 
-                articles={popularArticleRankingData || []}
-                isLoading={isPopularArticleRankingLoading}
-              />
-            </div>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>不人気クイズランキング</h1>
-        {!isUnpopularQuizRankingLoading ? (
-        <div>
-          <div className="quiz-grid">
-            <QuizRanking 
-              quizzes={unpopularQuizRankingData || []}
-              isLoading={isUnpopularQuizRankingLoading}
-            />
+        ) : (
+          <p>Loading...</p>
+        )}
+        <h1>最新の記事</h1>
+          {!isLatestArticleLoading ? (
+          <div>
+              <div className="quiz-grid">
+                <ArticleRanking 
+                  articles={latestArticleData || []}
+                  isLoading={isLatestArticleLoading}
+                />
+              </div>
           </div>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>不人気記事ランキング</h1>
-        {!isUnpopularArticleRankingLoading ? (
-        <div>
-          {unpopularArticleRankingData!.map(a => (
-            <div key={a.id} className="quiz-grid">
-              <ArticleRanking 
-                articles={unpopularArticleRankingData || []}
-                isLoading={isUnpopularArticleRankingLoading}
+        ) : (
+          <p>Loading...</p>
+        )}
+        <h1>クイズアクセス数ランキング</h1>
+          {!isPopularQuizRankingLoading ? (
+          <div>
+            <div className="quiz-grid">
+              <QuizRanking 
+                quizzes={popularQuizRankingData || []}
+                isLoading={isPopularQuizRankingLoading}
               />
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+        <h1>記事アクセス数ランキング</h1>
+          {!isPopularArticleRankingLoading ? (
+          <div>
+              <div className="quiz-grid">
+                <ArticleRanking 
+                  articles={popularArticleRankingData || []}
+                  isLoading={isPopularArticleRankingLoading}
+                />
+              </div>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+        <h1>不人気クイズランキング</h1>
+          {!isUnpopularQuizRankingLoading ? (
+          <div>
+            <div className="quiz-grid">
+              <QuizRanking 
+                quizzes={unpopularQuizRankingData || []}
+                isLoading={isUnpopularQuizRankingLoading}
+              />
+            </div>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+        <h1>不人気記事ランキング</h1>
+          {!isUnpopularArticleRankingLoading ? (
+          <div>
+            {unpopularArticleRankingData!.map(a => (
+              <div key={a.id} className="quiz-grid">
+                <ArticleRanking 
+                  articles={unpopularArticleRankingData || []}
+                  isLoading={isUnpopularArticleRankingLoading}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </PageLayout>
   )
 }

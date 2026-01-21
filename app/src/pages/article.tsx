@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { useArticle } from "@/lib/hooks/useArticle"
 import { useIncrementArticleView } from "@/lib/hooks/useIncrementArticleView"
+import { PageLayout } from "@/pageLayout"
 import "@/css/article.css"
 
 export function Article() {
@@ -20,23 +21,25 @@ export function Article() {
   if (error || !article) return <p className="loading">記事が見つかりません</p>
 
   return (
-    <div className="article-detail">
-      <h1 className="article-title">{article.title}</h1>
-      <p className="article-date">
-        更新日: {article.updatedAt.slice(0, 10).replace(/\//g, "年").replace("年", "年").replace("年", "年")}
-      </p>
-      {article.tags.length > 0 && (
-        <div className="article-tags">
-          {article.tags.map(tag => (
-            <span key={tag} className="tag">{tag}</span>
-          ))}
+    <PageLayout>
+      <div className="article-detail">
+        <h1 className="article-title">{article.title}</h1>
+        <p className="article-date">
+          更新日: {article.updatedAt.slice(0, 10).replace(/\//g, "年").replace("年", "年").replace("年", "年")}
+        </p>
+        {article.tags.length > 0 && (
+          <div className="article-tags">
+            {article.tags.map(tag => (
+              <span key={tag} className="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+        <div className="article-content markdown">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {article.content}
+          </ReactMarkdown>
         </div>
-      )}
-      <div className="article-content markdown">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {article.content}
-        </ReactMarkdown>
       </div>
-    </div>
+    </PageLayout>
   )
 }
