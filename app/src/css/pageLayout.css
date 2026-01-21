@@ -1,0 +1,35 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+/* footer */
+.page-footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.page-footer-copy {
+  margin: 0;
+}
+
+.page-footer-nav a {
+  color: #666;
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+.page-footer-nav a:hover {
+  text-decoration: underline;
+  color: #000;
+}

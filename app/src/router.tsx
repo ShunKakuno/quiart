@@ -8,6 +8,7 @@ import { PostArticle } from "@/pages/postArticle"
 import { CreateQuiz } from "@/pages/createQuiz"
 import { AdminLogin } from "@/pages/adminLogin"
 import { AdminDashboard } from "@/pages/adminDashboard"
+import { TermsOfService } from "@/pages/termsOfService"
 import { AppLayout } from "@/appLayout"
 
 export const Router = () => (
@@ -19,6 +20,7 @@ export const Router = () => (
         <Route path="/quiz/:id" element={<Quiz />} />
         <Route path="/articleList" element={<ArticleList />} />
         <Route path="/article/:id" element={<Article />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/admin/postArticle" element={<PostArticle />} />
         <Route path="/admin/createQuiz" element={<CreateQuiz />} />
         <Route path="/admin/login" element={<AdminLogin />} />
