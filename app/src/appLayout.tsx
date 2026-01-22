@@ -20,11 +20,11 @@ export function AppLayout() {
         <aside className="sidebar">
           <nav>
             <Link to="/">トップ</Link>
-            <Link to="/quiz">クイズ一覧</Link>
+            <Link to="/quizList">クイズ一覧</Link>
+            <Link to="/terms">用語集</Link>
             <Link to="/articleList">ブログ記事一覧</Link>
           </nav>
         </aside>
-
         <main className="content">
           <Outlet />
         </main>

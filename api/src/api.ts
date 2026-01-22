@@ -114,7 +114,6 @@ api.post("/quiz/:id/view", async (c) => {
   return c.json({ ok: true })
 })
 
-
 api.get("/popularQuizRanking", async c => {
   const quizList = await prisma.quiz.findMany({
     orderBy: {
@@ -348,6 +347,40 @@ api.get("/admin/me", async (c) => {
       },
     }
   )
+})
+
+api.get("/terms", async c => {
+  const terms = await prisma.terms.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  }
+  )
+  return c.json(terms)
+})
+
+api.get("/term/:id", async c => {
+  const id = Number(c.req.param("id"))
+  const term = await prisma.terms.findUnique({
+    where: { id }
+  })
+  if (!term) {
+    return c.json({ error: "terms not found" }, 404)
+  }
+  return c.json(term)
+})
+
+api.post("/term/:id/view", async (c) => {
+  const id = Number(c.req.param("id"))
+
+  await prisma.terms.update({
+    where: { id },
+    data: {
+      view: { increment: 1 },
+    },
+  })
+
+  return c.json({ ok: true })
 })
 
 export default app
