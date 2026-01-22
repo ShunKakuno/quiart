@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useTerm } from "@/lib/hooks/useTerm"
 import { PageLayout } from "@/pageLayout"
 import { useIncrementTermView } from "@/lib/hooks/useIncrementTermView"
+import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import "@/css/term.css"
 
 export function Term() {
@@ -39,6 +40,7 @@ export function Term() {
           {term.explanation}
         </div>
       </div>
+      <HatenaBookMark />
     </PageLayout>
   )
 }

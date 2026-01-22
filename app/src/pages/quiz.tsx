@@ -4,6 +4,7 @@ import { useQuiz } from "@/lib/hooks/useQuiz"
 import { QuizCard } from "@/components/card/quizCard"
 import { PageLayout } from "@/pageLayout"
 import { useIncrementQuizView } from "@/lib/hooks/useIncrementQuizView"
+import { HatenaBookMark } from "@/components/util/hatenabookmark"
 
 export function Quiz() {
   const { id } = useParams<{ id: string }>()
@@ -31,6 +32,7 @@ export function Quiz() {
           <p>Loading...</p>
         )}
       </div>
+      <HatenaBookMark />
     </PageLayout>
   )
 
