@@ -1,0 +1,52 @@
+.term-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  line-height: 1.9;
+  color: #222;
+}
+
+.term-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.term-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.term-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.term-tag {
+  background: #f2f2f2;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.term-view {
+  font-size: 0.85rem;
+}
+
+.term-description {
+  background: #f8f8f8;
+  padding: 16px;
+  border-left: 4px solid #333;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.term-explanation {
+  font-size: 1rem;
+  white-space: pre-wrap;
+}

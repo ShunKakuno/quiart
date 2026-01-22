@@ -62,3 +62,14 @@ model AdminSession {
 
   admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
 }
+
+model Terms {
+  id          Int @id @default(autoincrement())
+  term        String
+  description String
+  category  String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  deleted     String @default("0")
+  view        Int @default(0)
+}

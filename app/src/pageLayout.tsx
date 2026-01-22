@@ -11,7 +11,6 @@ export function PageLayout({ children }: Props) {
       <main className="page-content">
         {children}
       </main>
-
       <footer className="page-footer">
         <p className="page-footer-copy">© eHZ</p>
         <nav className="page-footer-nav">

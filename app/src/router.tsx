@@ -4,6 +4,8 @@ import { QuizList } from "@/pages/quizList"
 import { Quiz } from "@/pages/quiz"
 import { ArticleList } from "@/pages/articleList"
 import { Article } from "@/pages/article"
+import { TermsList } from "@/pages/termsList"
+import { Term } from "@/pages/term"
 import { PostArticle } from "@/pages/postArticle"
 import { CreateQuiz } from "@/pages/createQuiz"
 import { AdminLogin } from "@/pages/adminLogin"
@@ -17,10 +19,12 @@ export const Router = () => (
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<Top />} />
-        <Route path="/quiz" element={<QuizList />} />
+        <Route path="/quizList" element={<QuizList />} />
         <Route path="/quiz/:id" element={<Quiz />} />
         <Route path="/articleList" element={<ArticleList />} />
         <Route path="/article/:id" element={<Article />} />
+        <Route path="/terms" element={<TermsList />} />
+        <Route path="/term/:id" element={<Term />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/admin/postArticle" element={<PostArticle />} />
