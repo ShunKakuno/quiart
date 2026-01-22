@@ -11,5 +11,6 @@ export type QuizCreateInput = {
   explanation: string
   categories: string[]
   correctQuizId: string
+  articleId?: number | null 
   choices: ChoiceInput[]
 }

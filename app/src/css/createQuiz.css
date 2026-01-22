@@ -68,3 +68,16 @@
 .create-quiz button:active {
   transform: translateY(1px);
 }
+
+/* 成功・エラー表示 */
+.quiz-success {
+  color: #10b981;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.quiz-error {
+  color: #ef4444;
+  margin-top: 12px;
+  font-weight: bold;
+}

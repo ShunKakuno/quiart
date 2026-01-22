@@ -8,20 +8,22 @@ export function CreateQuiz() {
   const { data: admin } = useAdminDashboard()
   if (!admin) return <p>ログインしてください</p>
   const post = useCreateQuiz()
-  const [form, setForm] = useState<QuizCreateInput>({
+  const initialForm: QuizCreateInput = {
     title: "",
     tag: "",
     level: "",
     explanation: "",
     categories: [],
     correctQuizId: "",
+    articleId: null,
     choices: [
       { selectId: "1", text: "" },
       { selectId: "2", text: "" },
       { selectId: "3", text: "" },
       { selectId: "4", text: "" },
     ],
-  })
+  }
+  const [form, setForm] = useState<QuizCreateInput>(initialForm)
 
   const updateChoice = (index: number, text: string) => {
     const next = [...form.choices]
@@ -50,15 +52,49 @@ export function CreateQuiz() {
         {form.choices.map((c, i) => (
           <div key={c.selectId} className="choice-item">
             <input
-              key={c.selectId}
               placeholder={`選択肢 ${c.selectId}`}
               value={c.text}
               onChange={e => updateChoice(i, e.target.value)}
             />
+            <input
+              type="radio"
+              name="correct"
+              checked={form.correctQuizId === c.selectId}
+              onChange={e => setForm({ ...form, correctQuizId: c.selectId })}
+            />
           </div>
         ))}
+
         </div>
-        <button onClick={() => post.mutate(form)}>作成</button>   
+        <h3>記事ID</h3>
+        <div>
+          <input
+            type="number"
+            placeholder="記事ID（任意）"
+            value={form.articleId ?? ""}
+            onChange={e =>
+              setForm({
+                ...form,
+                articleId: e.target.value === ""
+                  ? null
+                  : Number(e.target.value),
+              })
+            }
+          />
+        </div>
+        <button
+          onClick={() =>
+            post.mutate(form, {
+              onSuccess: () => {
+                setForm(initialForm)
+              },
+            })
+          }
+        >
+          作成
+        </button>
+        {post.isSuccess && <p className="quiz-success">作成完了！</p>}
+        {post.isError && <p className="quiz-error">エラーが発生しました</p>}
       </div>
     </>
   )
