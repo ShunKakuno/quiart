@@ -7,6 +7,7 @@ import { useQuizWithArticle } from "@/lib/hooks/useQuizWithArticle"
 import { useIncrementArticleView } from "@/lib/hooks/useIncrementArticleView"
 import { PageLayout } from "@/pageLayout"
 import { QuizCard } from "@/components/card/quizCard"
+import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import "@/css/article.css"
 
 export function Article() {
@@ -70,6 +71,7 @@ export function Article() {
         ))}
       </div>
       )}
+      <HatenaBookMark />
     </PageLayout>
   )
 }
