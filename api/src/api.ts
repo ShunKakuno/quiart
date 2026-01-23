@@ -34,29 +34,49 @@ api.get("/quiz", async c => {
   return c.json(quiz)
 })
 
-api.post("/admin/quiz", async (c) => {
+api.post("/admin/quiz", async c => {
   const body = await c.req.json()
+  const {
+    title,
+    level,
+    explanation,
+    correctQuizId,
+    articleId,
+    choices,
+    categories,
+  } = body
 
   const quiz = await prisma.quiz.create({
     data: {
-      title: body.title,
-      tag: body.tag,
-      level: body.level,
-      explanation: body.explanation,
-      categories: body.categories,
-      correctQuizId: body.correctQuizId,
+      title,
+      level,
+      explanation,
+      correctQuizId,
+      articleId,
       choices: {
-        create: body.choices.map((c: any) => ({
-          selectId: c.selectId,
-          text: c.text,
-          selected: 0,
-        })),
+        create: choices,
       },
     },
   })
 
-  return c.json(quiz)
+  for (const name of categories) {
+    const category = await prisma.category.upsert({
+      where: { name },
+      update: {},
+      create: { name },
+    })
+
+    await prisma.quizCategory.create({
+      data: {
+        quizId: quiz.id,
+        categoryId: category.id,
+      },
+    })
+  }
+
+  return c.json(quiz, 201)
 })
+
 
 api.get("/quizList", async c => {
   const quizList = await prisma.quiz.findMany({
@@ -136,10 +156,26 @@ api.get("/unpopularQuizRanking", async c => {
 
 api.get("/article/:id", async c => {
   const id = c.req.param("id")
+
   const article = await prisma.article.findUnique({
     where: { id },
+    include: {
+      articleLinks: {
+        include: {
+          category: true,
+        },
+      },
+    },
   })
-  return c.json(article)
+
+  if (!article) return c.json({ error: "not found" }, 404)
+
+  const categories = article.articleLinks.map(l => l.category.name)
+
+  return c.json({
+    ...article,
+    categories,
+  })
 })
 
 api.get("/article-with-quiz/:id", async c => {
@@ -197,6 +233,24 @@ api.get("/latestArticle", async c => {
   return c.json(articleList)
 })
 
+api.get("/category/:name/articles", async c => {
+  const name = c.req.param("name")
+
+  const articles = await prisma.article.findMany({
+    where: {
+      articleLinks: {
+        some: {
+          category: {
+            name,
+          },
+        },
+      },
+    },
+  })
+
+  return c.json(articles)
+})
+
 api.get("/popularArticleRanking", async c => {
   const articleList = await prisma.article.findMany({
     orderBy: {
@@ -233,9 +287,23 @@ api.post("/admin/article", async c => {
       data: {
         title,
         content: body,
-        tags
       },
     })
+
+    for (const name of tags) {
+      const category = await prisma.category.upsert({
+        where: { name },
+        update: {},
+        create: { name },
+      })
+
+      await prisma.articleCategory.create({
+        data: {
+          articleId: article.id,
+          categoryId: category.id,
+        },
+      })
+    }
 
     const qiitaRes = await fetch("https://qiita.com/api/v2/items", {
       method: "POST",
@@ -247,7 +315,7 @@ api.post("/admin/article", async c => {
         title,
         body,
         private: false,
-        tags: tags.map(t => ({ name: t }))
+        tags: tags.map(t => ({ name: t })),
       }),
     })
 
@@ -266,7 +334,7 @@ api.post("/admin/article", async c => {
 
     return c.json({ ok: true, qiitaId: qiita.id })
   } catch (e) {
-    console.error("POST /api/article crashed:", e)
+    console.error("POST /admin/article crashed:", e)
     return c.json({ error: String(e) }, 500)
   }
 })
@@ -381,6 +449,62 @@ api.post("/term/:id/view", async (c) => {
   })
 
   return c.json({ ok: true })
+})
+
+api.get("/article/:id/categories", async c => {
+  const articleId = c.req.param("id")
+
+  const links = await prisma.articleCategory.findMany({
+    where: { articleId },
+    include: {
+      category: true,
+    },
+  })
+
+  const categories = links.map(l => l.category.name)
+
+  return c.json(categories)
+})
+
+api.get("/quiz/:id/categories", async c => {
+  const quizId = Number(c.req.param("id"))
+
+  const links = await prisma.quizCategory.findMany({
+    where: { quizId },
+    include: {
+      category: true,
+    },
+  })
+
+  const categories = links.map(l => l.category.name)
+
+  return c.json(categories)
+})
+
+api.get("/category/:name/quizzes", async c => {
+  const name = c.req.param("name")
+
+  const quizzes = await prisma.quiz.findMany({
+    where: {
+      quizLinks: {
+        some: {
+          category: {
+            name,
+          },
+        },
+      },
+    },
+  })
+
+  return c.json(quizzes)
+})
+
+api.get("/categories", async c => {
+  const categories = await prisma.category.findMany({
+    orderBy: { name: "asc" },
+  })
+
+  return c.json(categories)
 })
 
 export default app

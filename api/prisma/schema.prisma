@@ -8,13 +8,26 @@ generator client {
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+
+  quizLinks    QuizCategory[]
+  articleLinks ArticleCategory[]
+}
+
+model TermCategory {
+  termId     Int
+  categoryId Int
+
+  @@id([termId, categoryId])
+}
+
 model Quiz {
   id            Int @id @default(autoincrement())
   title         String
-  tag           String
   level         String
   explanation   String
-  categories    String[]
   correctQuizId String
   createdAt     DateTime  @default(now())
   deleted       String @default("0")
@@ -22,6 +35,17 @@ model Quiz {
   view          Int @default(0)
 
   choices       Choice[]
+  quizLinks     QuizCategory[]
+}
+
+model QuizCategory {
+  quizId     Int
+  categoryId Int
+
+  quiz       Quiz     @relation(fields: [quizId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([quizId, categoryId])
 }
 
 model Choice {
@@ -29,21 +53,32 @@ model Choice {
   quizId     Int
   selectId   String
   text       String
-  selected   Int
+  selected   Int @default(0)
 
   quiz   Quiz @relation(fields: [quizId], references: [id])
 }
 
 model Article {
-  id         String   @id @default(cuid())
+  id         Int   @id @default(autoincrement())
   qiitaId    String?
   content    String
   title      String
-  tags       String[]
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @default(now())
   deleted    String @default("0")
   view       Int @default(0)
+
+  articleLinks ArticleCategory[]
+}
+
+model ArticleCategory {
+  articleId  Int
+  categoryId Int
+
+  article    Article  @relation(fields: [articleId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([articleId, categoryId])
 }
 
 model Admin {
