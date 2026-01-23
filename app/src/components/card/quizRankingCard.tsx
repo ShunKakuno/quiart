@@ -10,12 +10,6 @@ export function QuizRankingCard({ item }: Props) {
   return (
     <Link to={`/quiz/${item.id}`} className="quiz-ranking-card">
       <h2 className="quiz-ranking-title">{item.title}</h2>
-
-      {item.title && (
-        <p className="quiz-ranking-description">
-          {item.title.slice(0, 60)}...
-        </p>
-      )}
     </Link>
   )
 }
