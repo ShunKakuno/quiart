@@ -11,10 +11,6 @@ export function ArticleRankingCard({ item }: Props) {
     <Link to={`/article/${item.id}`} className="article-ranking-card">
       <h2 className="article-ranking-title">{item.title}</h2>
 
-      <p className="article-ranking-content">
-        {item.content.slice(0, 80)}...
-      </p>
-
       <div className="article-ranking-footer">
         <span className="article-ranking-date">
           {new Date(item.createdAt).toLocaleDateString()}
