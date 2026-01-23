@@ -1,9 +1,15 @@
+/* ================================
+   レイアウト
+================================ */
 .create-quiz {
   max-width: 720px;
   margin: 0 auto;
   padding: 24px;
 }
 
+/* ================================
+   共通 input / textarea
+================================ */
 .create-quiz input,
 .create-quiz textarea {
   width: 100%;
@@ -13,6 +19,7 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
 .create-quiz textarea {
@@ -27,11 +34,17 @@
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
 }
 
+/* ================================
+   見出し
+================================ */
 .create-quiz h3 {
   margin: 24px 0 12px;
   font-size: 1.1rem;
 }
 
+/* ================================
+   選択肢
+================================ */
 .choice-list {
   display: grid;
   gap: 12px;
@@ -47,6 +60,55 @@
   margin-bottom: 0;
 }
 
+/* ================================
+   カテゴリ入力
+================================ */
+.category-input {
+  margin-top: 12px;
+}
+
+/* 重要：詳細度を上げて共通inputを上書き */
+.create-quiz .category-input input {
+  margin-bottom: 0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.create-quiz .category-input input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+/* タグ一覧 */
+.category-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* タグ見た目 */
+.category-tag {
+  background: #111;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.category-tag:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+  background: #333;
+}
+
+/* ================================
+   ボタン
+================================ */
 .create-quiz button {
   margin-top: 24px;
   width: 100%;
@@ -58,7 +120,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s;
 }
 
 .create-quiz button:hover {
@@ -69,7 +131,14 @@
   transform: translateY(1px);
 }
 
-/* 成功・エラー表示 */
+.create-quiz button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   成功・エラー表示
+================================ */
 .quiz-success {
   color: #10b981;
   margin-top: 12px;
