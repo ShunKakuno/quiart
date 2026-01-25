@@ -1,9 +1,9 @@
 export type Article = {
-  id: string
+  id: number
   qiitaId?: string
   content: string
   title: string
-  tags: string[]
+  categories: string[]
   createdAt: string
   updatedAt: string
   deleted: string

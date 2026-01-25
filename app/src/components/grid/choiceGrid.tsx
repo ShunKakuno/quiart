@@ -19,7 +19,7 @@ export function ChoiceGrid({
     <div className="choice-grid">
       {choices.map(c => (
         <ChoiceCard
-          key={c.id}
+          key={c.selectId}
           choice={c}
           isSelected={selected === c.selectId}
           isCorrect={c.selectId === correctId}

@@ -1,32 +1,41 @@
 .quiz-ranking-card {
-  display: block;
-  height: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 18px;
+  border-radius: 14px;
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  transition: all 0.2s ease;
 }
 
 .quiz-ranking-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d0d7de;
 }
 
+/* タイトル */
 .quiz-ranking-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  line-height: 1.4;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #111827;
 }
 
-.quiz-ranking-description {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 12px;
+/* タグエリア */
+.quiz-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
 }
 
 .quiz-ranking-footer {
@@ -34,7 +43,7 @@
   justify-content: flex-end;
 }
 
-.quiz-ranking-meta {
+.quiz-ranking-date {
   font-size: 0.8rem;
-  color: #888;
+  color: #999;
 }

@@ -38,3 +38,9 @@
   font-size: 0.8rem;
   color: #999;
 }
+
+.article-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
