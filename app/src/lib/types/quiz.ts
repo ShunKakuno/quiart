@@ -9,7 +9,7 @@ export type Choice = {
 export type Quiz = {
   id: string
   title: string
-  tag: string
+  categories: string[]
   level: string
   explanation: string
   createdAt: string

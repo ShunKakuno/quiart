@@ -23,10 +23,10 @@ export function ArticleList() {
               <p className="article-date">
                 更新日: {article.updatedAt.slice(0, 10).replace(/\//g, "年").replace("年", "年").replace("年", "年")}
               </p>
-              {article.tags.length > 0 && (
+              {article.categories.length > 0 && (
                 <div className="article-tags">
-                  {article.tags.map(tag => (
-                    <span key={tag} className="tag">{tag}</span>
+                  {article.categories.map(category => (
+                    <span key={category} className="tag">{category}</span>
                   ))}
                 </div>
               )}
