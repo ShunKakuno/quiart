@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAdminLogin } from "@/lib/hooks/useAdminLogin"
-import "@/css/adminLogin.css"
+import styles from "@/css/adminLogin.module.css"
 
 export function AdminLogin() {
   const [email, setEmail] = useState("")
@@ -15,7 +15,7 @@ export function AdminLogin() {
   }
 
   return (
-    <div className="admin-login">
+    <div className={styles.adminLogin}>
       <h1>管理者ログイン</h1>
 
       <input
@@ -36,7 +36,7 @@ export function AdminLogin() {
         {loading ? "ログイン中..." : "ログイン"}
       </button>
 
-      {error && <p className="error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   )
 }

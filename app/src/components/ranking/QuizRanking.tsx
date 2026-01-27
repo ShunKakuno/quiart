@@ -1,6 +1,6 @@
 import { QuizRankingCard } from "@/components/card/quizRankingCard"
-import "@/css/top.css"
 import type { Quiz } from "@/lib/types/quiz"
+import styles from "@/css/quizRanking.module.css"
 
 type QuizRankingProps = {
   quizzes: Quiz[]
@@ -9,13 +9,13 @@ type QuizRankingProps = {
 
 export function QuizRanking({ quizzes, isLoading }: QuizRankingProps) {
   return (
-    <div className="quiz-section">
+    <div className={styles.quizSection}>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div>
           {quizzes.map(quiz => (
-            <div key={quiz.id} className="quiz-grid">
+            <div key={quiz.id} className={styles.quizGrid}>
               <QuizRankingCard item={quiz} />
             </div>
           ))}

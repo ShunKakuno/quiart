@@ -7,10 +7,10 @@ import {
   useUnpopularArticleRanking 
 } from "@/lib/hooks/useTop"
 import { QuizCard } from "@/components/card/quizCard"
-import { ArticleRanking } from "@/components/ranking/ArticleRanking"
-import { QuizRanking } from "@/components/ranking/QuizRanking"
+import { ArticleRanking } from "@/components/ranking/articleRanking"
+import { QuizRanking } from "@/components/ranking/quizRanking"
 import { PageLayout } from "@/pageLayout"
-import "@/css/top.css"
+import styles from "@/css/top.module.css"
 
 export function Top() {
   const { data: latestQuizData, isLoading: isLatestQuizLoading } = useLatestQuiz()
@@ -27,7 +27,7 @@ export function Top() {
         {!isLatestQuizLoading ? (
           <div>
             {latestQuizData!.map(q => (
-              <div key={q.id} className="quiz-grid">
+              <div key={q.id} className={styles.quizGrid}>
                 <QuizCard 
                   quiz={q}
                 />
@@ -40,7 +40,7 @@ export function Top() {
         <h1>最新の記事</h1>
           {!isLatestArticleLoading ? (
           <div>
-              <div className="quiz-grid">
+              <div className={styles.quizGrid}>
                 <ArticleRanking 
                   articles={latestArticleData || []}
                   isLoading={isLatestArticleLoading}
@@ -53,7 +53,7 @@ export function Top() {
         <h1>クイズアクセス数ランキング</h1>
           {!isPopularQuizRankingLoading ? (
           <div>
-            <div className="quiz-grid">
+            <div className={styles.quizGrid}>
               <QuizRanking 
                 quizzes={popularQuizRankingData || []}
                 isLoading={isPopularQuizRankingLoading}
@@ -66,7 +66,7 @@ export function Top() {
         <h1>記事アクセス数ランキング</h1>
           {!isPopularArticleRankingLoading ? (
           <div>
-              <div className="quiz-grid">
+              <div className={styles.quizGrid}>
                 <ArticleRanking 
                   articles={popularArticleRankingData || []}
                   isLoading={isPopularArticleRankingLoading}
@@ -79,7 +79,7 @@ export function Top() {
         <h1>不人気クイズランキング</h1>
           {!isUnpopularQuizRankingLoading ? (
           <div>
-            <div className="quiz-grid">
+            <div className={styles.quizGrid}>
               <QuizRanking 
                 quizzes={unpopularQuizRankingData || []}
                 isLoading={isUnpopularQuizRankingLoading}
@@ -93,7 +93,7 @@ export function Top() {
           {!isUnpopularArticleRankingLoading ? (
           <div>
             {unpopularArticleRankingData!.map(a => (
-              <div key={a.id} className="quiz-grid">
+              <div key={a.id} className={styles.quizGrid}>
                 <ArticleRanking 
                   articles={unpopularArticleRankingData || []}
                   isLoading={isUnpopularArticleRankingLoading}

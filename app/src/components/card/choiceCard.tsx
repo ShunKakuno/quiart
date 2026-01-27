@@ -1,5 +1,5 @@
 import type { Choice } from "@/lib/types/quiz"
-import "@/css/choiceCard.css"
+import styles from "@/css/choiceCard.module.css"
 
 type Props = {
   choice: Choice
@@ -17,14 +17,12 @@ export function ChoiceCard({
   onClick
 }: Props) {
 
-  let className = "choice-card"
-
-  if (showResult) {
-    if (isCorrect) className += " correct"
-    else if (isSelected) className += " incorrect"
-  } else if (isSelected) {
-    className += " selected"
-  }
+  const className = [
+    styles.choiceCard,
+    showResult && isCorrect ? styles.correct : "",
+    showResult && !isCorrect && isSelected ? styles.incorrect : "",
+    !showResult && isSelected ? styles.selected : "",
+  ].join(" ")
 
   return (
     <button

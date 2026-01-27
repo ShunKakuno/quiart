@@ -1,4 +1,4 @@
-.article-list {
+.articleList {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -7,7 +7,8 @@
   padding: 16px;
 }
 
-.article-card {
+.articleCard {
+  text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -16,24 +17,24 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.article-card:hover {
+.articleCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.article-title {
+.articleTitle {
   font-size: 1.25rem;
   margin-bottom: 8px;
   color: #333;
 }
 
-.article-date {
+.articleDate {
   font-size: 0.875rem;
   color: #666;
   margin-bottom: 8px;
 }
 
-.article-tags {
+.articleTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;

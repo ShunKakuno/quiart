@@ -1,4 +1,4 @@
-.hatena-bookmark-floating {
+.hatenaBookmarkFloating {
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -21,13 +21,13 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.hatena-bookmark-floating:hover {
+.hatenaBookmarkFloating:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
 }
 
 /* 丸いB!アイコン */
-.hatena-icon {
+.hatenaIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -44,6 +44,6 @@
 }
 
 /* テキスト */
-.hatena-text {
+.hatenaText {
   letter-spacing: 0.5px;
 }

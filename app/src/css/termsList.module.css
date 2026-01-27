@@ -1,4 +1,4 @@
-.quiz-list {
+.termsList {
   max-width: 1000px;
   margin: 32px auto;
   padding: 0 24px;
@@ -7,7 +7,7 @@
   gap: 24px;
 }
 
-.quiz-content {
+.termsContent {
   display: block;
   padding: 16px 20px;
 
@@ -28,18 +28,18 @@
     background-color 0.2s ease;
 }
 
-.quiz-content:hover {
+.termsContent:hover {
   background-color: #f9fafb;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
-.quiz-content:active {
+.termsContent:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.quiz-title {
+.termsTitle {
   line-height: 1.4;
 
   display: -webkit-box;

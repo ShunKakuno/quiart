@@ -1,4 +1,4 @@
-.article-ranking-card {
+.articleRankingCard {
   display: block;
   height: 100%;
   padding: 16px;
@@ -10,37 +10,49 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.article-ranking-card:hover {
+.articleRankingCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-.article-ranking-title {
+.articleRankingTitle {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 8px;
   line-height: 1.4;
 }
 
-.article-ranking-content {
+.articleRankingContent {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.5;
   margin-bottom: 12px;
 }
 
-.article-ranking-footer {
+.articleRankingFooter {
   display: flex;
   justify-content: flex-end;
 }
 
-.article-ranking-date {
+.articleRankingDate {
   font-size: 0.8rem;
   color: #999;
 }
 
-.article-tags {
+.articleTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.articleGrid {
+    margin-bottom: 24px;
+}
+
+.tag {
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
 }

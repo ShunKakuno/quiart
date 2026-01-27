@@ -3,8 +3,7 @@ import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import { usePostArticle } from "@/lib/hooks/usePostArticle"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import "@/css/postArticle.css"
-import "@/css/article.css"
+import styles from "@/css/postArticle.module.css"
 
 export function PostArticle() {
   const { data: admin, isLoading } = useAdminDashboard()
@@ -28,20 +27,20 @@ export function PostArticle() {
   }
 
   return (
-    <div className="article-container">
-      <h1 className="article-title">記事作成</h1>
+    <div className={styles.articleContainer}>
+      <h1 className={styles.articleTitle}>記事作成</h1>
 
       <input
-        className="article-input"
+        className={styles.articleInput}
         placeholder="タイトル"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
 
       {/* ===== エディタ + プレビュー ===== */}
-      <div className="editor-wrapper">
+      <div className={styles.editorWrapper}>
         <textarea
-          className="article-textarea"
+          className={styles.articleTextarea}
           placeholder="本文（Markdown可）"
           value={body}
           onChange={e => setBody(e.target.value)}
@@ -52,7 +51,7 @@ export function PostArticle() {
             }
           }}
         />
-        <div className="article-preview">
+        <div className={styles.articlePreview}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
           >
@@ -62,9 +61,9 @@ export function PostArticle() {
       </div>
 
       {/* ===== タグ入力 ===== */}
-      <div className="tags-box">
+      <div className={styles.tagsBox}>
         <input
-          className="tags-input"
+          className={styles.tagsInput}
           placeholder="タグを入力してEnter"
           value={tagsInput}
           onChange={e => setTagsInput(e.target.value)}
@@ -75,9 +74,9 @@ export function PostArticle() {
             }
           }}
         />
-        <div className="tags-list">
+        <div className={styles.tagsList}>
           {tags.map(t => (
-            <span key={t} className="tags-chip" onClick={() => removetags(t)}>
+            <span key={t} className={styles.tagsChip} onClick={() => removetags(t)}>
               #{t} ×
             </span>
           ))}
@@ -86,13 +85,13 @@ export function PostArticle() {
 
       <button
         onClick={() => post.mutate({ title, body, tags })}
-        className="article-button"
+        className={styles.articleButton}
       >
         Qiitaに投稿
       </button>
 
-      {post.isSuccess && <p className="article-success">投稿完了！</p>}
-      {post.isError && <p className="article-error">エラーが発生しました</p>}
+      {post.isSuccess && <p className={styles.articleSuccess}>投稿完了！</p>}
+      {post.isError && <p className={styles.articlError}>エラーが発生しました</p>}
     </div>
   )
 }

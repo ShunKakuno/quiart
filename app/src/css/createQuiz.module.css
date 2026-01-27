@@ -1,7 +1,7 @@
 /* ================================
    レイアウト
 ================================ */
-.create-quiz {
+.createQuiz {
   max-width: 720px;
   margin: 0 auto;
   padding: 24px;
@@ -10,8 +10,8 @@
 /* ================================
    共通 input / textarea
 ================================ */
-.create-quiz input,
-.create-quiz textarea {
+.createQuiz input,
+.createQuiz textarea {
   width: 100%;
   padding: 12px 14px;
   margin-bottom: 16px;
@@ -22,13 +22,13 @@
   transition: border 0.2s, box-shadow 0.2s;
 }
 
-.create-quiz textarea {
+.createQuiz textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-.create-quiz input:focus,
-.create-quiz textarea:focus {
+.createQuiz input:focus,
+.createQuiz textarea:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
@@ -37,7 +37,7 @@
 /* ================================
    見出し
 ================================ */
-.create-quiz h3 {
+.createQuiz h3 {
   margin: 24px 0 12px;
   font-size: 1.1rem;
 }
@@ -45,43 +45,43 @@
 /* ================================
    選択肢
 ================================ */
-.choice-list {
+.choiceList {
   display: grid;
   gap: 12px;
 }
 
-.choice-item {
+.choiceItem {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.choice-item input {
+.choiceItem input {
   margin-bottom: 0;
 }
 
 /* ================================
    カテゴリ入力
 ================================ */
-.category-input {
+.categoryInput {
   margin-top: 12px;
 }
 
 /* 重要：詳細度を上げて共通inputを上書き */
-.create-quiz .category-input input {
+.createQuiz .categoryInput input {
   margin-bottom: 0;
   border-radius: 6px;
   padding: 10px 12px;
   font-size: 14px;
 }
 
-.create-quiz .category-input input:focus {
+.createQuiz .categoryInput input:focus {
   border-color: #4f46e5;
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
 }
 
 /* タグ一覧 */
-.category-tags {
+.categoryTags {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -89,7 +89,7 @@
 }
 
 /* タグ見た目 */
-.category-tag {
+.categoryTag {
   background: #111;
   color: #fff;
   padding: 6px 10px;
@@ -100,7 +100,7 @@
   transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
 }
 
-.category-tag:hover {
+.categoryagT:hover {
   transform: translateY(-2px);
   opacity: 0.85;
   background: #333;
@@ -109,7 +109,7 @@
 /* ================================
    ボタン
 ================================ */
-.create-quiz button {
+.createQuiz button {
   margin-top: 24px;
   width: 100%;
   padding: 14px;
@@ -123,15 +123,15 @@
   transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s;
 }
 
-.create-quiz button:hover {
+.createQuiz button:hover {
   background-color: #4338ca;
 }
 
-.create-quiz button:active {
+.createQuiz button:active {
   transform: translateY(1px);
 }
 
-.create-quiz button:disabled {
+.createQuiz button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -139,19 +139,19 @@
 /* ================================
    成功・エラー表示
 ================================ */
-.quiz-success {
+.quizSuccess {
   color: #10b981;
   margin-top: 12px;
   font-weight: bold;
 }
 
-.quiz-error {
+.quizError {
   color: #ef4444;
   margin-top: 12px;
   font-weight: bold;
 }
 
-.create-quiz select {
+.createQuiz select {
   width: 100%;
   padding: 10px;
   margin-bottom: 16px;

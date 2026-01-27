@@ -1,6 +1,6 @@
 import type { Choice } from "@/lib/types/quiz"
 import { ChoiceCard } from "@/components/card/choiceCard"
-import "@/css/choiceGrid.css"
+import styles from "@/css/choiceGrid.module.css"
 
 type Props = {
   choices?: Choice[]          // ← optional にする
@@ -16,7 +16,7 @@ export function ChoiceGrid({
   onSelect,
 }: Props) {
   return (
-    <div className="choice-grid">
+    <div className={styles.choiceGrid}>
       {choices.map(c => (
         <ChoiceCard
           key={c.selectId}

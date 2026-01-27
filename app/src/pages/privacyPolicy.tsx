@@ -1,18 +1,18 @@
 import { PageLayout } from "@/pageLayout"
-import "@/css/privacyPolicy.css"
+import styles from "@/css/privacyPolicy.module.css"
 
 export function PrivacyPolicy() {
   return (
     <PageLayout>
-        <div className="privacy-container">
-        <h1 className="privacy-title">プライバシーポリシー</h1>
+        <div className={styles.privacyContainer}>
+        <h1 className={styles.privacyTitle}>プライバシーポリシー</h1>
 
-        <p className="privacy-text">
+        <p className={styles.privacyText}>
             本サービスでは、ユーザーの個人情報を適切に取り扱うことを重要と考え、
             以下のとおりプライバシーポリシーを定めます。
         </p>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>1. 取得する情報</h2>
             <p>
             本サービスでは、ユーザー登録を行わない場合でも、
@@ -25,7 +25,7 @@ export function PrivacyPolicy() {
             </ul>
         </section>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>2. 利用目的</h2>
             <p>取得した情報は、以下の目的で利用します。</p>
             <ul>
@@ -35,7 +35,7 @@ export function PrivacyPolicy() {
             </ul>
         </section>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>3. 第三者提供</h2>
             <p>
             取得した情報を、法令に基づく場合を除き、
@@ -43,7 +43,7 @@ export function PrivacyPolicy() {
             </p>
         </section>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>4. アクセス解析ツールについて</h2>
             <p>
             本サービスでは、サービス改善のため、
@@ -52,7 +52,7 @@ export function PrivacyPolicy() {
             </p>
         </section>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>5. プライバシーポリシーの変更</h2>
             <p>
             本ポリシーの内容は、必要に応じて変更することがあります。
@@ -60,7 +60,7 @@ export function PrivacyPolicy() {
             </p>
         </section>
 
-        <section className="privacy-section">
+        <section className={styles.privacySection}>
             <h2>6. お問い合わせ</h2>
             <p>
             本ポリシーに関するお問い合わせは、運営者までご連絡ください。

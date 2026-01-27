@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom"
 import { useEffect } from "react"
-import "@/css/appLayout.css"
+import styles from "@/css/appLayout.module.css"
 
 export function AppLayout() {
   const { pathname } = useLocation()
@@ -11,13 +11,13 @@ export function AppLayout() {
   }, [pathname])
 
   return (
-    <div className="app">
-      <header className="header">
-        <div className="logo">eHZ</div>
+    <div className={styles.app}>
+      <header className={styles.header}>
+        <div className={styles.logo}>eHZ</div>
       </header>
 
-      <div className="body">
-        <aside className="sidebar">
+      <div className={styles.body}>
+        <aside className={styles.sidebar}>
           <nav>
             <Link to="/">トップ</Link>
             <Link to="/quizList">クイズ一覧</Link>
@@ -25,7 +25,7 @@ export function AppLayout() {
             <Link to="/articleList">ブログ記事一覧</Link>
           </nav>
         </aside>
-        <main className="content">
+        <main className={styles.content}>
           <Outlet />
         </main>
       </div>

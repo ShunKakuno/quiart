@@ -7,8 +7,9 @@ import { useQuizWithArticle } from "@/lib/hooks/useQuizWithArticle"
 import { useIncrementArticleView } from "@/lib/hooks/useIncrementArticleView"
 import { PageLayout } from "@/pageLayout"
 import { QuizCard } from "@/components/card/quizCard"
+import { Tag } from "@/components/tag/tag"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
-import "@/css/article.css"
+import styles from "@/css/article.module.css"
 
 export function Article() {
   const { id } = useParams<{ id: string }>()
@@ -43,34 +44,27 @@ export function Article() {
 
   return (
     <PageLayout>
-      <div className="article-detail">
-        <h1 className="article-title">{article.title}</h1>
-
-        <p className="article-date">
+      <div className={styles.articleDetail}>
+        <h1 className={styles.articleTitle}>{article.title}</h1>
+        <p className={styles.articleDate}>
           更新日: {article.updatedAt.slice(0, 10)}
         </p>
-
-        {article.categories.length > 0 && (
-          <div className="article-tags">
-            {article.categories.map(category => (
-              <span key={category} className="tag">{category}</span>
-            ))}
-          </div>
-        )}
-
-        <div className="article-content markdown">
+        <Tag categories={article.categories} />
+        <div className={styles.articleContent}>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {article.content}
           </ReactMarkdown>
         </div>
       </div>
-      {quizzes && quizzes.length > 0 && (
-      <div className="quiz-grid">
-        {quizzes.map(q => (
-          <QuizCard key={q.id} quiz={q} />
-        ))}
+      <div>
+        {quizzes && quizzes.length > 0 && (
+        <div className={styles.quizGrid}>
+          {quizzes.map(q => (
+            <QuizCard key={q.id} quiz={q} />
+          ))}
+        </div>
+        )}
       </div>
-      )}
       <HatenaBookMark />
     </PageLayout>
   )

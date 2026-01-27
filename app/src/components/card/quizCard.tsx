@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import type { Quiz } from "@/lib/types/quiz"
+import { Tag } from "@/components/tag/tag"
 import { ChoiceGrid } from "@/components/grid/choiceGrid"
-import "@/css/quizCard.css"
-import "@/css/tag.css"
+import styles from "@/css/quizCard.module.css"
 
 type Props = {
   quiz: Quiz
@@ -32,34 +32,27 @@ export function QuizCard({ quiz }: Props) {
   }
 
   const levelNum = Number(quiz.level)
-  console.log(levelNum)
   const levelPercent = levelNum * 20
   const levelLabelMap = ["超簡単", "簡単", "普通", "難しい", "鬼むず"]
   const levelLabel = levelLabelMap[levelNum - 1] ?? "不明"
 
   return (
-    <div className="quiz-card">
+    <div className={styles.quizCard}>
       <h2>{quiz.title}</h2>
-      <div className='tag-span'>
-        {quiz.categories.length > 0 && (
-        <div className="quiz-tags">
-          {quiz.categories.map(category => (
-            <span key={category} className="tag">{category}</span>
-          ))}
-        </div>
-        )}
+      <div className={styles.tagSpan}>
+        <Tag categories={quiz.categories} />
       </div>
-      <div className="difficulty-wrap">
-        <span className="difficulty-label">難易度</span>
+      <div className={styles.difficultyWrap}>
+        <span className={styles.difficultyLabel}>難易度</span>
 
-        <div className="difficulty-bar">
+        <div className={styles.difficultyBar}>
           <div
-            className="difficulty-fill"
+            className={styles.difficultyFill}
             style={{ width: `${levelPercent}%` }}
           />
         </div>
 
-        <span className="difficulty-text">
+        <span className={styles.difficultyText}>
           Lv.{levelNum} / {levelLabel}
         </span>
       </div>
@@ -72,13 +65,13 @@ export function QuizCard({ quiz }: Props) {
 
       {selected && (
         <>
-          <div className={isCorrect ? "result correct" : "result incorrect"}>
-            <span className="icon">{isCorrect ? "⭕" : "✖️"}</span>
-            <span className="text">{isCorrect ? "正解！" : "不正解"}</span>
+          <div className={`${styles.result} ${isCorrect ? styles.correct : styles.incorrect}`}>
+            <span className={styles.icon}>{isCorrect ? "⭕" : "✖️"}</span>
+            <span className={styles.text}>{isCorrect ? "正解！" : "不正解"}</span>
           </div>
 
           <button
-            className="explanation-button"
+            className={styles.explanationButton}
             onClick={() => setShowExplanation(prev => !prev)}
           >
             {showExplanation ? "解説を閉じる" : "解説を見る"}
@@ -86,16 +79,16 @@ export function QuizCard({ quiz }: Props) {
 
           {showExplanation && (
             <>
-              <div className="explanation">{quiz.explanation}</div>
+              <div className={styles.explanation}>{quiz.explanation}</div>
 
-              <div className="correct-rate-wrap">
+              <div className={styles.correctRateWrap}>
                 <div
-                  className="rate-circle"
+                  className={styles.rateCircle}
                   style={{ ["--rate" as any]: correctRateRounded }}
                 >
-                  <span className="rate-text">{correctRateRounded}%</span>
+                  <span className={styles.rateText}>{correctRateRounded}%</span>
                 </div>
-                <div className="rate-label">正解率</div>
+                <div className={styles.rateLabel}>正解率</div>
               </div>
             </>
           )}
