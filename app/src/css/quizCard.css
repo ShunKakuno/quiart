@@ -183,3 +183,47 @@
 .tag-span {
   margin-bottom: 10px;
 }
+
+.difficulty-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.difficulty-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.difficulty-bar {
+  flex: 1;
+  height: 8px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.difficulty-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* レベルごとの色（重要） */
+.difficulty-fill {
+  background: linear-gradient(
+    90deg,
+    #4caf50,
+    #cddc39,
+    #ffc107,
+    #ff9800,
+    #f44336
+  );
+}
+
+.difficulty-text {
+  font-size: 12px;
+  font-weight: bold;
+  color: #444;
+}

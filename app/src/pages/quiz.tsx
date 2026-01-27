@@ -24,9 +24,9 @@ export function Quiz() {
       <div>
         {!isLoading ? (
           <div>
-                <QuizCard 
-                  quiz={quiz}
-                />
+            <QuizCard 
+              quiz={quiz}
+            />
           </div>
         ) : (
           <p>Loading...</p>

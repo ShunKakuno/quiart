@@ -31,6 +31,12 @@ export function QuizCard({ quiz }: Props) {
     setShowExplanation(false)
   }
 
+  const levelNum = Number(quiz.level)
+  console.log(levelNum)
+  const levelPercent = levelNum * 20
+  const levelLabelMap = ["超簡単", "簡単", "普通", "難しい", "鬼むず"]
+  const levelLabel = levelLabelMap[levelNum - 1] ?? "不明"
+
   return (
     <div className="quiz-card">
       <h2>{quiz.title}</h2>
@@ -42,6 +48,20 @@ export function QuizCard({ quiz }: Props) {
           ))}
         </div>
         )}
+      </div>
+      <div className="difficulty-wrap">
+        <span className="difficulty-label">難易度</span>
+
+        <div className="difficulty-bar">
+          <div
+            className="difficulty-fill"
+            style={{ width: `${levelPercent}%` }}
+          />
+        </div>
+
+        <span className="difficulty-text">
+          Lv.{levelNum} / {levelLabel}
+        </span>
       </div>
       <ChoiceGrid
         choices={quiz.choices}

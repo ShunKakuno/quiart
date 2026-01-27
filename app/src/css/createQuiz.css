@@ -150,3 +150,12 @@
   margin-top: 12px;
   font-weight: bold;
 }
+
+.create-quiz select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
