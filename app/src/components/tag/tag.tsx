@@ -1,7 +1,7 @@
 import styles from "@/css/tag.module.css"
 
 type Categories = {
-  categories: String[]
+  categories: string[]
 }
 
 export function Tag({ categories }: Categories) {
@@ -10,7 +10,7 @@ export function Tag({ categories }: Categories) {
         {categories.length > 0 && (
         <div className={styles.tags}>
             {categories.map(category => (
-            <span className={styles.tag}>{category}</span>
+            <span key={category} className={styles.tag}>{category}</span>
             ))}
         </div>
         )}
