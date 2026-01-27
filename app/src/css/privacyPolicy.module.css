@@ -1,4 +1,4 @@
-.terms-container {
+.privacyContainer {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px 80px;
@@ -8,7 +8,7 @@
   color: #222;
 }
 
-.terms-title {
+.privacyTitle {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 24px;
@@ -16,30 +16,29 @@
   padding-bottom: 12px;
 }
 
-.terms-text {
+.privacyText {
   margin-bottom: 32px;
   color: #444;
 }
 
-.terms-section {
+.privacySection {
   margin-bottom: 32px;
 }
 
-.terms-section h2 {
+.privacySection h2 {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 12px;
 }
 
-.terms-section p {
+.privacySection p {
   margin-bottom: 12px;
 }
 
-.terms-section ul,
-.terms-section ol {
+.privacySection ul {
   padding-left: 20px;
 }
 
-.terms-section li {
+.privacySection li {
   margin-bottom: 8px;
 }

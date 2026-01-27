@@ -4,7 +4,7 @@ import { useTerm } from "@/lib/hooks/useTerm"
 import { PageLayout } from "@/pageLayout"
 import { useIncrementTermView } from "@/lib/hooks/useIncrementTermView"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
-import "@/css/term.css"
+import styles from "@/css/term.module.css"
 
 export function Term() {
   const { id } = useParams<{ id: string }>()
@@ -21,22 +21,22 @@ export function Term() {
 
   return (
     <PageLayout>
-      <div className="term-container">
-        <h1 className="term-title">{term.term}</h1>
+      <div className={styles.termContainer}>
+        <h1 className={styles.termTitle}>{term.term}</h1>
 
-        <div className="term-meta">
-          <div className="term-tags">
+        <div className={styles.termMeta}>
+          <div className={styles.termTags}>
             {term.category.map((c) => (
-              <span key={c} className="term-tag">#{c}</span>
+              <span key={c} className={styles.termTag}>#{c}</span>
             ))}
           </div>
         </div>
 
-        <div className="term-description">
+        <div className={styles.termDescription}>
           {term.description}
         </div>
 
-        <div className="term-explanation">
+        <div className={styles.termExplanation}>
           {term.explanation}
         </div>
       </div>

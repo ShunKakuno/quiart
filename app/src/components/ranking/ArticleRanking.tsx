@@ -1,6 +1,6 @@
-import "@/css/top.css"
 import type { Article } from "@/lib/types/article"
 import { ArticleRankingCard } from "@/components/card/articleRankingCard"
+import styles from "@/css/articleRanking.module.css"
 
 type ArticleRankingProps = {
   articles: Article[]
@@ -9,13 +9,13 @@ type ArticleRankingProps = {
 
 export function ArticleRanking({ articles, isLoading }: ArticleRankingProps) {
   return (
-    <div className="quiz-section">
+    <div className={styles.quizSection}>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div>
           {articles.map(article => (
-            <div key={article.id} className="article-grid">
+            <div key={article.id} className={styles.articleGrid}>
               <ArticleRankingCard item={article} />
             </div>
           ))}

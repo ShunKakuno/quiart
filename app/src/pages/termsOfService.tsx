@@ -1,19 +1,19 @@
 import { PageLayout } from "@/pageLayout"
-import "@/css/terms.css"
+import styles from "@/css/terms.module.css"
 
 export function TermsOfService() {
   return (
     <PageLayout>
-      <div className="terms-container">
-        <h1 className="terms-title">利用規約</h1>
+      <div className={styles.termsContainer}>
+        <h1 className={styles.termsTitle}>利用規約</h1>
 
-        <p className="terms-text">
+        <p className={styles.termsText}>
           本利用規約（以下「本規約」といいます。）は、当アプリケーション（以下「本サービス」といいます。）の
           利用条件を定めるものです。ユーザーの皆さま（以下「ユーザー」といいます。）には、
           本規約に同意のうえ、本サービスをご利用いただきます。
         </p>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第1条（適用）</h2>
           <p>
             本規約は、ユーザーと本サービス運営者（以下「運営者」といいます。）との間の
@@ -21,7 +21,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第2条（利用登録）</h2>
           <p>
             本サービスは、特別な登録を必要とせず利用できる場合がありますが、
@@ -29,7 +29,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第3条（禁止事項）</h2>
           <ul>
             <li>法令または公序良俗に違反する行為</li>
@@ -41,7 +41,7 @@ export function TermsOfService() {
           </ul>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第4条（サービス内容の変更・停止）</h2>
           <p>
             運営者は、ユーザーへの事前の通知なく、
@@ -49,7 +49,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第5条（知的財産権）</h2>
           <p>
             本サービス内の文章、画像、プログラム、クイズデータ等に関する著作権および
@@ -57,7 +57,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第6条（免責事項）</h2>
           <ol>
             <li>本サービスの内容の正確性、完全性、有用性について保証するものではありません。</li>
@@ -66,7 +66,7 @@ export function TermsOfService() {
           </ol>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第7条（個人情報の取扱い）</h2>
           <p>
             本サービスにおけるユーザー情報の取扱いについては、
@@ -74,7 +74,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第8条（規約の変更）</h2>
           <p>
             運営者は、必要と判断した場合には、ユーザーに通知することなく
@@ -82,7 +82,7 @@ export function TermsOfService() {
           </p>
         </section>
 
-        <section className="terms-section">
+        <section className={styles.termsSection}>
           <h2>第9条（準拠法・管轄）</h2>
           <p>
             本規約の解釈にあたっては、日本法を準拠法とします。

@@ -1,7 +1,7 @@
 import { useQuizList } from "@/lib/hooks/useQuizList"
 import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
-import "@/css/quizList.css"
+import styles from "@/css/quizList.module.css"
 
 export function QuizList() {
   const { data, isLoading } = useQuizList()
@@ -10,14 +10,14 @@ export function QuizList() {
 
   return (
     <PageLayout>
-      <div className="quiz-list">
+      <div className={styles.quizList}>
         {data!.map(quiz => (
           <Link
             to={`/quiz/${quiz.id}`}
             key={quiz.id}
-            className="quiz-content"
+            className={styles.quizContent}
           >
-            <h2 className="quiz-title">{quiz.title}</h2>
+            <h2 className={styles.quizTitle}>{quiz.title}</h2>
           </Link>
         ))}
       </div>

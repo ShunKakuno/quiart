@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useCreateQuiz } from "@/lib/hooks/useCreateQuiz"
 import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import type { QuizCreateInput } from "@/lib/types/quizCreateInput"
-import "@/css/createQuiz.css"
+import styles from "@/css/createQuiz.module.css"
 
 export function CreateQuiz() {
   const { data: admin } = useAdminDashboard()
@@ -49,7 +49,7 @@ export function CreateQuiz() {
     <>
       <h1>クイズ作成</h1>
 
-      <div className="create-quiz">
+      <div className={styles.createQuiz}>
         {/* タイトル */}
         <h3>タイトル</h3>
         <input
@@ -82,9 +82,9 @@ export function CreateQuiz() {
 
         {/* 選択肢 */}
         <h3>選択肢</h3>
-        <div className="choice-list">
+        <div className={styles.choiceList}>
           {form.choices.map((c, i) => (
-            <div key={c.selectId} className="choice-item">
+            <div key={c.selectId} className={styles.choiceItem}>
               <input
                 placeholder={`選択肢 ${c.selectId}`}
                 value={c.text}
@@ -104,7 +104,7 @@ export function CreateQuiz() {
 
         {/* カテゴリ */}
         <h3>カテゴリ</h3>
-        <div className="category-input">
+        <div className={styles.categoryInput}>
           <input
             placeholder="カテゴリを入力してEnter"
             value={categoryInput}
@@ -117,11 +117,11 @@ export function CreateQuiz() {
             }}
           />
 
-          <div className="category-tags">
+          <div className={styles.categoryTags}>
             {form.categories.map(c => (
               <span
                 key={c}
-                className="category-tag"
+                className={styles.categoryTag}
                 onClick={() =>
                   setForm({
                     ...form,
@@ -172,10 +172,10 @@ export function CreateQuiz() {
         </button>
 
         {post.isSuccess && (
-          <p className="quiz-success">作成完了！</p>
+          <p className={styles.quizSuccess}>作成完了！</p>
         )}
         {post.isError && (
-          <p className="quiz-error">エラーが発生しました</p>
+          <p className={styles.quizError}>エラーが発生しました</p>
         )}
       </div>
     </>

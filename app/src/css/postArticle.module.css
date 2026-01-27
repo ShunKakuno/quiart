@@ -1,0 +1,325 @@
+.articleInput,
+.articleTextarea,
+.tagsInput {
+  width: 100%;
+  box-sizing: border-box; /* padding込みで幅100% */
+}
+
+/* タイトル */
+.articleTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* タイトル入力 */
+.articleInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+}
+
+/* 本文 */
+.articleTextarea {
+  width: 100%;
+  height: 250px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 16px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+/* タグ入力ボックス */
+.tagsBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* タグ入力フィールド */
+.tagsInput {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* タグリスト */
+.tagsList {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-height: 36px;
+  justify-content: flex-start;
+}
+
+/* タグチップ */
+.tagsChip {
+  background: #3b82f6; /* 明るめ青 */
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.tagsChip:hover {
+  background: #2563eb;
+}
+
+/* 最大5個タグの場合のグリッドも可 */
+.tagsList > span:nth-child(n+6) {
+  display: none;
+}
+
+/* 投稿ボタン */
+.articleButton {
+  width: 100%;
+  padding: 12px;
+  background: #10b981; /* 緑アクセント */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.articleButton:hover {
+  background: #059669;
+}
+
+/* 成功・エラー表示 */
+.articleSuccess {
+  color: #10b981;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.articleError {
+  color: #ef4444;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.editorWrapper {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.articleTextarea {
+  width: 50%;
+  min-height: 400px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.articlePreview {
+  width: 50%;
+  min-height: 400px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .editorWrapper {
+    flex-direction: row;
+  }
+
+  .articleTextarea,
+  .articlePreview {
+    width: 50%;
+    min-height: 500px;
+  }
+}
+
+.articleContainer table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.articleContainer th,
+.articleContainer td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.articleContainer th {
+  background: #f5f5f5;
+}
+
+/* ---------- 共通設定 ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- 記事一覧 ---------- */
+.articleList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.articleCard {
+  display: block;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+}
+
+.articleCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.articleTitle {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.articleDate {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.articleTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+/* ---------- Markdown 表示 ---------- */
+.articleContent {
+  margin-top: 16px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* 見出し */
+.articleContent h1,
+.articleContent h2,
+.articleContent h3 {
+  margin-top: 1.6em;
+  font-weight: bold;
+}
+
+.articleContent h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.articleContent h3 {
+  margin-bottom: 0.3em; /* ← ここが効く */
+}
+
+/* 見出し直下の本文 */
+.articleContent h1 + p,
+.articleContent h2 + p,
+.articleContent h3 + p {
+  margin-top: 0.3em;
+}
+
+/* 段落 */
+.articleContent p {
+  margin: 0.8em 0;
+  white-space: pre-wrap;
+}
+
+/* リスト */
+.articleContent ul {
+  padding-left: 1.5em;
+  margin: 0.8em 0;
+}
+
+.articleContent li {
+  margin: 0.4em 0;
+}
+
+/* インラインコード */
+.articleContent code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* コードブロック */
+.articleContent pre {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* 引用 */
+.articleContent blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 12px;
+  color: #666;
+  margin: 1em 0;
+}
+
+/* テーブル */
+.articleContent table {
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.articleContent th,
+.articleContent td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.articleContent td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}

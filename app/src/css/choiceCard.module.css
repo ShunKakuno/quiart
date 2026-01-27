@@ -1,4 +1,4 @@
-.choice-card {
+.choiceCard {
   padding: 16px;
   border: 2px solid #e5e7eb; /* gray-200 */
   border-radius: 16px;
@@ -9,32 +9,32 @@
   font-weight: 500;
 }
 
-.choice-card:hover {
+.choiceCard:hover {
   border-color: #60a5fa; /* blue-400 */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-.choice-card.selected {
+.choiceCard.selected {
   border-color: #6366f1; /* Indigo */
   background-color: #e0e7ff; /* Indigo-50 */
 }
 
-.choice-card.correct {
+.choiceCard.correct {
   border-color: #22c55e; /* green-500 */
   background-color: #dcfce7; /* green-50 */
   color: #166534; /* green-800 */
   font-weight: bold;
 }
 
-.choice-card.incorrect {
+.choiceCard.incorrect {
   border-color: #ef4444; /* red-500 */
   background-color: #fee2e2; /* red-50 */
   color: #991b1b; /* red-800 */
   font-weight: bold;
 }
 
-.choice-card:disabled {
+.choiceCard:disabled {
   cursor: not-allowed;
   opacity: 0.8;
 }

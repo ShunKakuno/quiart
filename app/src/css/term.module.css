@@ -1,4 +1,4 @@
-.term-container {
+.termContainer {
   max-width: 800px;
   margin: 0 auto;
   padding: 32px 20px 60px;
@@ -6,13 +6,13 @@
   color: #222;
 }
 
-.term-title {
+.termTitle {
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 12px;
 }
 
-.term-meta {
+.termMeta {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,24 +21,24 @@
   color: #777;
 }
 
-.term-tags {
+.termTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.term-tag {
+.termTag {
   background: #f2f2f2;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 0.8rem;
 }
 
-.term-view {
+.termView {
   font-size: 0.85rem;
 }
 
-.term-description {
+.termDescription {
   background: #f8f8f8;
   padding: 16px;
   border-left: 4px solid #333;
@@ -46,7 +46,7 @@
   font-weight: 500;
 }
 
-.term-explanation {
+.term-Explanation {
   font-size: 1rem;
   white-space: pre-wrap;
 }

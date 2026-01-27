@@ -4,12 +4,12 @@
   flex-direction: column;
 }
 
-.page-content {
+.pageContent {
   flex: 1;
 }
 
 /* footer */
-.page-footer {
+.pageFooter {
   border-top: 1px solid #e5e5e5;
   padding: 16px 24px;
   display: flex;
@@ -19,17 +19,17 @@
   color: #666;
 }
 
-.page-footer-copy {
+.pageFooterCopy {
   margin: 0;
 }
 
-.page-footer-nav a {
+.pageFooterNav a {
   color: #666;
   text-decoration: none;
   margin-left: 16px;
 }
 
-.page-footer-nav a:hover {
+.pageFooterNav a:hover {
   text-decoration: underline;
   color: #000;
 }

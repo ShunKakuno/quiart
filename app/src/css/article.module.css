@@ -8,7 +8,7 @@ body {
 }
 
 /* ---------- 記事一覧 ---------- */
-.article-list {
+.articleList {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -17,7 +17,7 @@ body {
   padding: 0 16px;
 }
 
-.article-card {
+.articleCard {
   display: block;
   text-decoration: none;
   border: 1px solid #ddd;
@@ -29,40 +29,26 @@ body {
   color: inherit;
 }
 
-.article-card:hover {
+.articleCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
 }
 
-.article-title {
+.articleTitle {
   font-size: 1.25rem;
   margin-bottom: 8px;
   color: #222;
 }
 
-.article-date {
+.articleDate {
   font-size: 0.875rem;
   color: #666;
   margin-bottom: 8px;
 }
 
-.article-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background-color: #f0f0f0;
-  color: #555;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-}
-
 /* ---------- 個別記事ページ ---------- */
-.article-detail {
+.articleDetail {
   max-width: 800px;
   margin: 32px auto;
   padding: 16px;
@@ -71,72 +57,72 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.article-detail .article-title {
+.articleDetail .articleTitle {
   font-size: 1.5rem;
   margin-bottom: 8px;
 }
 
-.article-detail .article-date {
+.articleDetail .articleDate {
   font-size: 0.875rem;
   color: #666;
   margin-bottom: 8px;
 }
 
-.article-detail .article-tags .tag {
+.articleDetail .articleTags .tag {
   font-size: 0.75rem;
   background-color: #e0f0ff;
   color: #0366d6;
 }
 
 /* ---------- Markdown 表示 ---------- */
-.article-content {
+.articleContent {
   margin-top: 16px;
   line-height: 1.8;
   font-size: 16px;
 }
 
 /* 見出し */
-.article-content h1,
-.article-content h2,
-.article-content h3 {
+.articleContent h1,
+.articleContent h2,
+.articleContent h3 {
   margin-top: 1.6em;
   font-weight: bold;
 }
 
-.article-content h2 {
+.articleContent h2 {
   border-bottom: 1px solid #ddd;
   padding-bottom: 4px;
 }
 
-.article-content h3 {
+.articleContent h3 {
   margin-bottom: 0.3em; /* ← ここが効く */
 }
 
 /* 見出し直下の本文 */
-.article-content h1 + p,
-.article-content h2 + p,
-.article-content h3 + p {
+.articleContent h1 + p,
+.articleContent h2 + p,
+.articleContent h3 + p {
   margin-top: 0.3em;
 }
 
 /* 段落 */
-.article-content p {
+.articleContent p {
   margin: 0.8em 0;
   white-space: pre-wrap;
 }
 
 /* リスト */
-.article-content ul {
+.articleContent ul {
   padding-left: 1.5em;
   margin: 0.8em 0;
 }
 
-.article-content li {
+.articleContent li {
   margin: 0.4em 0;
 }
 
 /* インラインコード */
-.article-content code {
+.articleContent code {
   background: #f4f4f4;
   padding: 2px 6px;
   border-radius: 4px;
@@ -144,7 +130,7 @@ body {
 }
 
 /* コードブロック */
-.article-content pre {
+.articleContent pre {
   background: #1e1e1e;
   color: #fff;
   padding: 16px;
@@ -153,7 +139,7 @@ body {
 }
 
 /* 引用 */
-.article-content blockquote {
+.articleContent blockquote {
   border-left: 4px solid #ccc;
   padding-left: 12px;
   color: #666;
@@ -161,17 +147,24 @@ body {
 }
 
 /* テーブル */
-.article-content table {
+.articleContent table {
   border-collapse: collapse;
   margin: 1em 0;
 }
 
-.article-content th,
-.article-content td {
+.articleContent th,
+.articleContent td {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-.quiz-card {
-  margin-bottom: 24px;
+.articleContent td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.quizGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }

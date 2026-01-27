@@ -1,7 +1,7 @@
 import { useTermsList } from "@/lib/hooks/useTermsList"
 import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
-import "@/css/termsList.css"
+import styles from "@/css/termsList.module.css"
 
 export function TermsList() {
   const { data, isLoading } = useTermsList()
@@ -10,14 +10,14 @@ export function TermsList() {
 
   return (
     <PageLayout>
-      <div className="terms-list">
+      <div className={styles.termsList}>
         {data!.map(term => (
           <Link
             to={`/term/${term.id}`}
             key={term.id}
-            className="terms-content"
+            className={styles.termsContent}
           >
-            <h2 className="terms-title">{term.term}</h2>
+            <h2 className={styles.termsTitle}>{term.term}</h2>
           </Link>
         ))}
       </div>

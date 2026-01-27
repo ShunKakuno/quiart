@@ -1,4 +1,4 @@
-import "@/css/hatenabookmark.css"
+import styles from "@/css/hatenabookmark.module.css"
 
 export function HatenaBookMark() {
   const url = encodeURIComponent(window.location.href)
@@ -8,10 +8,10 @@ export function HatenaBookMark() {
       href={`https://b.hatena.ne.jp/entry/${url}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="hatena-bookmark-floating"
+      className={styles.hatenaBookmarkFloating}
     >
-      <span className="hatena-icon">B!</span>
-      <span className="hatena-text">ブックマーク</span>
+      <span className={styles.hatenaIcon}>B!</span>
+      <span className={styles.hatenaText}>ブックマーク</span>
     </a>
   )
 }
