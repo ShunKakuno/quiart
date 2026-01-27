@@ -99,6 +99,7 @@ api.get("/latestQuiz", async c => {
       id: true,
       title: true,
       explanation: true,
+      level: true,
       correctQuizId: true,
       createdAt: true,
       choices: {
@@ -144,6 +145,7 @@ api.get("/quiz/:id", async c => {
     select: {
       id: true,
       title: true,
+      level: true,
       explanation: true,
       correctQuizId: true,
       createdAt: true,
@@ -169,6 +171,7 @@ api.get("/quiz/:id", async c => {
   return c.json({
     id: q.id,
     title: q.title,
+    level: q.level,
     explanation: q.explanation,
     correctQuizId: q.correctQuizId,
     createdAt: q.createdAt.toISOString(),

@@ -51,13 +51,29 @@ export function CreateQuiz() {
 
       <div className="create-quiz">
         {/* タイトル */}
+        <h3>タイトル</h3>
         <input
           placeholder="タイトル"
           value={form.title}
           onChange={e => setForm({ ...form, title: e.target.value })}
         />
 
+        {/* 難易度 */}
+        <h3>難易度</h3>
+        <select
+          value={form.level}
+          onChange={e => setForm({ ...form, level: e.target.value })}
+        >
+          <option value="">選択してください</option>
+          <option value="1">Lv.1（超簡単）</option>
+          <option value="2">Lv.2（簡単）</option>
+          <option value="3">Lv.3（普通）</option>
+          <option value="4">Lv.4（難しい）</option>
+          <option value="5">Lv.5（鬼むず）</option>
+        </select>
+
         {/* 解説 */}
+        <h3>解説</h3>
         <textarea
           placeholder="解説"
           value={form.explanation}
@@ -139,6 +155,7 @@ export function CreateQuiz() {
         {/* 作成ボタン */}
         <button
           disabled={
+            !form.level ||
             !form.correctQuizId ||
             form.choices.some(c => c.text.trim() === "")
           }
