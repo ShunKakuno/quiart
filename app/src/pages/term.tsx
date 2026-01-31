@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useTerm } from "@/lib/hooks/useTerm"
 import { PageLayout } from "@/pageLayout"
 import { useIncrementTermView } from "@/lib/hooks/useIncrementTermView"
+import { Tag } from "@/components/tag/tag"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import styles from "@/css/term.module.css"
 
@@ -23,19 +24,12 @@ export function Term() {
     <PageLayout>
       <div className={styles.termContainer}>
         <h1 className={styles.termTitle}>{term.term}</h1>
-
-        <div className={styles.termMeta}>
-          <div className={styles.termTags}>
-            {term.category.map((c) => (
-              <span key={c} className={styles.termTag}>#{c}</span>
-            ))}
-          </div>
+        <div className={styles.tagSpan}>
+          <Tag categories={term.categories} />
         </div>
-
         <div className={styles.termDescription}>
           {term.description}
         </div>
-
         <div className={styles.termExplanation}>
           {term.explanation}
         </div>

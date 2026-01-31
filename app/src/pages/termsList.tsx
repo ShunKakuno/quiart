@@ -1,6 +1,7 @@
 import { useTermsList } from "@/lib/hooks/useTermsList"
 import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
+import { Tag } from "@/components/tag/tag"
 import styles from "@/css/termsList.module.css"
 
 export function TermsList() {
@@ -18,6 +19,9 @@ export function TermsList() {
             className={styles.termsContent}
           >
             <h2 className={styles.termsTitle}>{term.term}</h2>
+            <div className={styles.tagSpan}>
+              <Tag categories={term.categories} />
+            </div>
           </Link>
         ))}
       </div>

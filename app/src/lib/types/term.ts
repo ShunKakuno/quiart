@@ -2,7 +2,7 @@ export type Term = {
   id: number
   term: string
   description: string
-  category: string[]
+  categories: string[]
   explanation: string
   createdAt: string
   updatedAt: string

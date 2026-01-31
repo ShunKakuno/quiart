@@ -15,6 +15,7 @@ export function AdminDashboard() {
         <h1>{admin?.email} の管理者ダッシュボード</h1>
             <Link to="/admin/postArticle">ブログ記事作成</Link>
             <Link to="/admin/createQuiz">クイズ作成</Link>
+            <Link to="/admin/createTerm">用語作成</Link>
         <button onClick={logout} style={{ marginTop: 20, padding: 10 }}>ログアウト</button>
         </div>
     </div>

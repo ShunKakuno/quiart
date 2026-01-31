@@ -624,20 +624,65 @@ api.get("/terms", async c => {
     orderBy: {
       createdAt: "desc",
     },
-  }
+    select: {
+      id: true,
+      term: true,
+      description: true,
+      createdAt: true,
+      view: true,
+      termLinks: {
+        select: {
+          category: {
+            select: { name: true }
+          }
+        }
+      }
+    }
+  })
+
+  return c.json(
+    terms.map(t => ({
+      id: t.id,
+      term: t.term,
+      description: t.description,
+      createdAt: t.createdAt.toISOString(),
+      view: t.view,
+      categories: t.termLinks.map(l => l.category.name),
+    }))
   )
-  return c.json(terms)
 })
 
 api.get("/term/:id", async c => {
   const id = Number(c.req.param("id"))
-  const term = await prisma.terms.findUnique({
-    where: { id }
+
+  const t = await prisma.terms.findFirst({
+    where: { id },
+    select: {
+      id: true,
+      term: true,
+      description: true,
+      createdAt: true,
+      termLinks: {
+        select: {
+          category: {
+            select: { name: true }
+          }
+        }
+      }
+    }
   })
-  if (!term) {
+
+  if (!t) {
     return c.json({ error: "terms not found" }, 404)
   }
-  return c.json(term)
+
+  return c.json({
+    id: t.id,
+    term: t.term,
+    description: t.description,
+    createdAt: t.createdAt.toISOString(),
+    categories: t.termLinks.map(l => l.category.name),
+  })
 })
 
 api.post("/term/:id/view", async (c) => {
@@ -651,6 +696,39 @@ api.post("/term/:id/view", async (c) => {
   })
 
   return c.json({ ok: true })
+})
+
+api.post("/admin/term", async c => {
+  const body = await c.req.json()
+  const {
+    term,
+    description,
+    categories,
+  } = body
+
+  const createTerm = await prisma.terms.create({
+    data: {
+      term,
+      description,
+    },
+  })
+
+  for (const name of categories) {
+    const category = await prisma.category.upsert({
+      where: { name },
+      update: {},
+      create: { name },
+    })
+
+    await prisma.termCategory.create({
+      data: {
+        termId: createTerm.id,
+        categoryId: category.id,
+      },
+    })
+  }
+
+  return c.json(createTerm, 201)
 })
 
 api.get("/article/:id/categories", async c => {
