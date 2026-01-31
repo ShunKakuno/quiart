@@ -3,6 +3,7 @@ import type { Quiz } from "@/lib/types/quiz"
 import { Tag } from "@/components/tag/tag"
 import { ChoiceGrid } from "@/components/grid/choiceGrid"
 import styles from "@/css/quizCard.module.css"
+import { Markdown } from "@/components/util/markdown"
 
 type Props = {
   quiz: Quiz
@@ -38,7 +39,7 @@ export function QuizCard({ quiz }: Props) {
 
   return (
     <div className={styles.quizCard}>
-      <h2>{quiz.title}</h2>
+      <h2><Markdown content={quiz.title} /></h2>
       <div className={styles.tagSpan}>
         <Tag categories={quiz.categories} />
       </div>
@@ -79,7 +80,7 @@ export function QuizCard({ quiz }: Props) {
 
           {showExplanation && (
             <>
-              <div className={styles.explanation}>{quiz.explanation}</div>
+              <div className={styles.explanation}><Markdown content={quiz.explanation} /></div>
 
               <div className={styles.correctRateWrap}>
                 <div

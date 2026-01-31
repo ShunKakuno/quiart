@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import type { Article } from "@/lib/types/article"
 import { Tag } from "@/components/tag/tag"
+import { Markdown } from "@/components/util/markdown"
 import styles from "@/css/articleRankingCard.module.css"
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 export function ArticleRankingCard({ item }: Props) {
   return (
     <Link to={`/article/${item.id}`} className={styles.articleRankingCard}>
-      <h2 className={styles.articleRankingTitle}>{item.title}</h2>
+      <h2 className={styles.articleRankingTitle}><Markdown content={item.title} /></h2>
       <Tag categories={item.categories} />
       <div className={styles.articleRankingFooter}>
         <span className={styles.articleRankingDate}>

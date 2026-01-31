@@ -1,0 +1,65 @@
+.markdownBody {
+  line-height: 1.8;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+/* 見出し */
+.h1 {
+  font-size: 28px;
+  margin: 32px 0 16px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.h2 {
+  font-size: 22px;
+  margin: 28px 0 14px;
+  border-left: 4px solid #333;
+  padding-left: 10px;
+}
+
+.h3 {
+  font-size: 18px;
+  margin: 24px 0 12px;
+}
+
+/* 段落 */
+.p {
+  margin: 12px 0;
+}
+
+/* リスト */
+.ul,
+.ol {
+  margin: 12px 0 12px 24px;
+}
+
+.li {
+  margin: 6px 0;
+}
+
+/* リンク */
+.link {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+/* インラインコード */
+.inlineCode {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* コードブロック */
+.codeBlock {
+  background: #0d1117;
+  color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 14px;
+}

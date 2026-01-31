@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import { usePostArticle } from "@/lib/hooks/usePostArticle"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { Markdown } from "@/components/util/markdown"
 import styles from "@/css/postArticle.module.css"
 
 export function PostArticle() {
@@ -52,11 +51,7 @@ export function PostArticle() {
           }}
         />
         <div className={styles.articlePreview}>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-          >
-            {body || "ここにプレビューが表示されます"}
-          </ReactMarkdown>
+          <Markdown content={body || "ここにプレビューが表示されます"} />
         </div>
       </div>
 

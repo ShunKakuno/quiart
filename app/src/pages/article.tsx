@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
 import { useArticle } from "@/lib/hooks/useArticle"
 import { useQuizWithArticle } from "@/lib/hooks/useQuizWithArticle"
 import { useIncrementArticleView } from "@/lib/hooks/useIncrementArticleView"
 import { PageLayout } from "@/pageLayout"
 import { QuizCard } from "@/components/card/quizCard"
 import { Tag } from "@/components/tag/tag"
+import { Markdown } from "@/components/util/markdown"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import styles from "@/css/article.module.css"
 
@@ -51,9 +50,7 @@ export function Article() {
         </p>
         <Tag categories={article.categories} />
         <div className={styles.articleContent}>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {article.content}
-          </ReactMarkdown>
+          <Markdown content={article.content} />
         </div>
       </div>
       <div>
