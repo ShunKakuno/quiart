@@ -5,7 +5,7 @@ import { PageLayout } from "@/pageLayout"
 import { useIncrementTermView } from "@/lib/hooks/useIncrementTermView"
 import { Tag } from "@/components/tag/tag"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
-import { Markdown } from "@/components/util/markdown"
+import { ArticleMarkdown } from "@/components/util/articleMarkdown"
 import styles from "@/css/term.module.css"
 
 export function Term() {
@@ -29,10 +29,10 @@ export function Term() {
           <Tag categories={term.categories} />
         </div>
         <div className={styles.termDescription}>
-          <Markdown content={term.description} />
+          <ArticleMarkdown content={term.description} />
         </div>
         <div className={styles.termExplanation}>
-          <Markdown content={term.explanation} />
+          <ArticleMarkdown content={term.explanation} />
         </div>
       </div>
       <HatenaBookMark />

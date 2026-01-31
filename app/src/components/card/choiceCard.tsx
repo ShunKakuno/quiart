@@ -1,5 +1,5 @@
 import type { Choice } from "@/lib/types/quiz"
-import { Markdown } from "@/components/util/markdown"
+import { InlineMarkdown } from "@/components/util/inlineMarkdown"
 import styles from "@/css/choiceCard.module.css"
 
 type Props = {
@@ -31,7 +31,7 @@ export function ChoiceCard({
       disabled={showResult}
       className={className}
     >
-      <Markdown content={choice.text} />
+      <InlineMarkdown content={choice.text} />
     </button>
   )
 }

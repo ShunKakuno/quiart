@@ -1,4 +1,4 @@
-.quizRankingCard {
+.termsContent {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -16,46 +16,30 @@
   transition: all 0.2s ease;
 }
 
-.quizRankingCard:hover {
+.termsContent:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   border-color: #d0d7de;
 }
 
-/* タイトル */
-.quizRankingTitle {
+.termsContent:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.termsTitle {
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.5;
   color: #111827;
 }
 
-/* タグエリア */
-.quizTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: auto;
-}
-
-.quizRankingFooter {
+.termFooter {
   display: flex;
   justify-content: flex-end;
 }
 
-.quizRankingDate {
+.termDate {
   font-size: 0.8rem;
   color: #999;
-}
-
-.quizGrid {
-    margin-bottom: 24px;
-}
-
-.tag {
-  background-color: #f0f0f0;
-  color: #555;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
 }

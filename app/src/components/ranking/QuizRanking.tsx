@@ -1,4 +1,4 @@
-import { QuizRankingCard } from "@/components/card/quizRankingCard"
+import { QuizListCard } from "@/components/card/quizListCard"
 import type { Quiz } from "@/lib/types/quiz"
 import styles from "@/css/quizRanking.module.css"
 
@@ -16,7 +16,7 @@ export function QuizRanking({ quizzes, isLoading }: QuizRankingProps) {
         <div>
           {quizzes.map(quiz => (
             <div key={quiz.id} className={styles.quizGrid}>
-              <QuizRankingCard item={quiz} />
+              <QuizListCard item={quiz} />
             </div>
           ))}
         </div>

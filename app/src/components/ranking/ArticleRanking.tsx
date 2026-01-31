@@ -1,5 +1,5 @@
 import type { Article } from "@/lib/types/article"
-import { ArticleRankingCard } from "@/components/card/articleRankingCard"
+import { ArticleListCard } from "@/components/card/articleListCard"
 import styles from "@/css/articleRanking.module.css"
 
 type ArticleRankingProps = {
@@ -16,7 +16,7 @@ export function ArticleRanking({ articles, isLoading }: ArticleRankingProps) {
         <div>
           {articles.map(article => (
             <div key={article.id} className={styles.articleGrid}>
-              <ArticleRankingCard item={article} />
+              <ArticleListCard item={article} />
             </div>
           ))}
         </div>

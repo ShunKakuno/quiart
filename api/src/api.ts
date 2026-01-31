@@ -80,12 +80,28 @@ api.post("/admin/quiz", async c => {
 
 api.get("/quizList", async c => {
   const quizList = await prisma.quiz.findMany({
-    orderBy: {
-      createdAt: "desc",
+    include: {
+      quizLinks: {
+        include: {
+          category: true,
+        },
+      },
     },
-  }
-  )
-  return c.json(quizList)
+  })
+
+  const result = quizList.map(q => ({
+    id: q.id,
+    title: q.title,
+    level: q.level,
+    explanation: q.explanation,
+    correctQuizId: q.correctQuizId,
+    createdAt: q.createdAt.toISOString(),
+    deleted: q.deleted,
+    view: q.view,
+    categories: q.quizLinks.map(l => l.category.name),
+  }))
+
+  return c.json(result)
 })
 
 api.get("/latestQuiz", async c => {

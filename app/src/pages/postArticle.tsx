@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
 import { usePostArticle } from "@/lib/hooks/usePostArticle"
-import { Markdown } from "@/components/util/markdown"
+import { ArticleMarkdown } from "@/components/util/articleMarkdown"
 import styles from "@/css/postArticle.module.css"
 
 export function PostArticle() {
@@ -51,7 +51,7 @@ export function PostArticle() {
           }}
         />
         <div className={styles.articlePreview}>
-          <Markdown content={body || "ここにプレビューが表示されます"} />
+          <ArticleMarkdown content={body || "ここにプレビューが表示されます"} />
         </div>
       </div>
 
