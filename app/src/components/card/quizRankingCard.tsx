@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import type { Quiz } from "@/lib/types/quiz"
 import { Tag } from "@/components/tag/tag"
+import { Markdown } from "@/components/util/markdown"
 import styles from "@/css/quizRankingCard.module.css"
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 export function QuizRankingCard({ item }: Props) {
   return (
     <Link to={`/quiz/${item.id}`} className={styles.quizRankingCard}>
-    <h2 className={styles.quizRankingTitle}>{item.title}</h2>
+    <h2 className={styles.quizRankingTitle}><Markdown content={item.title} /></h2>
     <Tag categories={item.categories} />
     <div className={styles.quizRankingFooter}>
       <span className={styles.quizRankingDate}>

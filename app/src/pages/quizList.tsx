@@ -1,6 +1,7 @@
 import { useQuizList } from "@/lib/hooks/useQuizList"
 import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
+import { Markdown } from "@/components/util/markdown"
 import styles from "@/css/quizList.module.css"
 
 export function QuizList() {
@@ -17,7 +18,7 @@ export function QuizList() {
             key={quiz.id}
             className={styles.quizContent}
           >
-            <h2 className={styles.quizTitle}>{quiz.title}</h2>
+            <h2 className={styles.quizTitle}><Markdown content={quiz.title} /></h2>
           </Link>
         ))}
       </div>
