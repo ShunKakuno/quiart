@@ -7,6 +7,7 @@ import { Article } from "@/pages/article"
 import { TermsList } from "@/pages/termsList"
 import { Term } from "@/pages/term"
 import { PostArticle } from "@/pages/postArticle"
+import { CreateTerm } from "@/pages/createTerm"
 import { CreateQuiz } from "@/pages/createQuiz"
 import { AdminLogin } from "@/pages/adminLogin"
 import { AdminDashboard } from "@/pages/adminDashboard"
@@ -29,6 +30,7 @@ export const Router = () => (
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/admin/postArticle" element={<PostArticle />} />
         <Route path="/admin/createQuiz" element={<CreateQuiz />} />
+        <Route path="/admin/createTerm" element={<CreateTerm />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>

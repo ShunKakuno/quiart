@@ -13,12 +13,16 @@ model Category {
   name  String @unique
 
   quizLinks    QuizCategory[]
+  termLinks    TermCategory[]
   articleLinks ArticleCategory[]
 }
 
 model TermCategory {
   termId     Int
   categoryId Int
+
+  term     Terms    @relation(fields: [termId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
 
   @@id([termId, categoryId])
 }
@@ -102,9 +106,10 @@ model Terms {
   id          Int @id @default(autoincrement())
   term        String
   description String
-  category  String[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now())
   deleted     String @default("0")
   view        Int @default(0)
+
+  termLinks TermCategory[]
 }
