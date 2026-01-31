@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm"
 import rehypeHighlight from "rehype-highlight"
 import "highlight.js/styles/github-dark.css"
 import "github-markdown-css/github-markdown.css"
-import styles from "@/css/markdown.module.css"
+import styles from "@/css/articleMarkdown.module.css"
 
 import hljs from "highlight.js/lib/core"
 import javascript from "highlight.js/lib/languages/javascript"
@@ -28,7 +28,7 @@ type Props = {
   content: string
 }
 
-export function Markdown({ content }: Props) {
+export function ArticleMarkdown({ content }: Props) {
   return (
     <div className={`${styles.markdownBody} markdown-body`}>
       <ReactMarkdown

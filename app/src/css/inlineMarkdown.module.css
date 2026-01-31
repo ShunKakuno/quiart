@@ -1,0 +1,21 @@
+.inlineMarkdown {
+  font-size: 14px;
+}
+
+.inlineMarkdown p {
+  margin: 0;
+}
+
+.inlineMarkdown pre {
+  margin: 8px 0;
+}
+
+/* ===== インラインコード（` `）はグレー ===== */
+.inlineMarkdown :not(pre) > code {
+  background: #f3f4f6;
+  color: #111;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Consolas, monospace;
+}

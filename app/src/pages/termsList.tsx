@@ -1,8 +1,6 @@
 import { useTermsList } from "@/lib/hooks/useTermsList"
-import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
-import { Tag } from "@/components/tag/tag"
-import { Markdown } from "@/components/util/markdown"
+import { TermListCard } from "@/components/card/termListCard"
 import styles from "@/css/termsList.module.css"
 
 export function TermsList() {
@@ -14,16 +12,7 @@ export function TermsList() {
     <PageLayout>
       <div className={styles.termsList}>
         {data!.map(term => (
-          <Link
-            to={`/term/${term.id}`}
-            key={term.id}
-            className={styles.termsContent}
-          >
-            <h2 className={styles.termsTitle}><Markdown content={term.term} /></h2>
-            <div className={styles.tagSpan}>
-              <Tag categories={term.categories} />
-            </div>
-          </Link>
+          <TermListCard key={term.id} item={term} />
         ))}
       </div>
     </PageLayout>

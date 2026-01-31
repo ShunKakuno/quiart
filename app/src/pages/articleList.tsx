@@ -2,7 +2,7 @@ import { useArticleList } from "@/lib/hooks/useArticleList"
 import { Link } from "react-router-dom"
 import { PageLayout } from "@/pageLayout"
 import { Tag } from "@/components/tag/tag"
-import { Markdown } from "@/components/util/markdown"
+import { InlineMarkdown } from "@/components/util/inlineMarkdown"
 import styles from "@/css/articleList.module.css"
 import type { Article as ArticleType } from "@/lib/types/article"
 
@@ -21,7 +21,7 @@ export function ArticleList() {
               key={article.id} 
               className={styles.articleCard}
             >
-              <h2 className={styles.articleTitle}><Markdown content={article.title} /></h2>
+              <h2 className={styles.articleTitle}><InlineMarkdown content={article.title} /></h2>
               <p className={styles.articleDate}>
                 更新日: {article.updatedAt.slice(0, 10).replace(/\//g, "年").replace("年", "年").replace("年", "年")}
               </p>

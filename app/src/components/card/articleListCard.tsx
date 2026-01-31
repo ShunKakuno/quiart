@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom"
 import type { Article } from "@/lib/types/article"
 import { Tag } from "@/components/tag/tag"
-import { Markdown } from "@/components/util/markdown"
-import styles from "@/css/articleRankingCard.module.css"
+import { InlineMarkdown } from "@/components/util/inlineMarkdown"
+import styles from "@/css/articleListCard.module.css"
 
 type Props = {
   item: Article
 }
 
-export function ArticleRankingCard({ item }: Props) {
+export function ArticleListCard({ item }: Props) {
   return (
     <Link to={`/article/${item.id}`} className={styles.articleRankingCard}>
-      <h2 className={styles.articleRankingTitle}><Markdown content={item.title} /></h2>
+      <h2 className={styles.articleRankingTitle}><InlineMarkdown content={item.title} /></h2>
       <Tag categories={item.categories} />
       <div className={styles.articleRankingFooter}>
         <span className={styles.articleRankingDate}>
