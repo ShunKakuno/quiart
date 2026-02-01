@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { Quiz } from "@/lib/types/quiz"
 import { Tag } from "@/components/tag/tag"
 import { ChoiceGrid } from "@/components/grid/choiceGrid"
+import { useIncrementChoiceSelect } from "@/lib/hooks/useIncrementChoiceSelect"
 import styles from "@/css/quizCard.module.css"
 import { ArticleMarkdown } from "@/components/util/articleMarkdown"
 
@@ -27,11 +28,17 @@ export function QuizCard({ quiz }: Props) {
       ? Math.round((correctChoice.selected / totalSelected) * 100)
       : 0
 
+  const incSelect = useIncrementChoiceSelect()
+
   const handleSelect = (id: string) => {
+    if (selected) return
+
     setSelected(id)
     setShowExplanation(false)
-  }
 
+    incSelect.mutate({ quizId: quiz.id, selectId: id })
+  }
+  
   const levelNum = Number(quiz.level)
   const levelPercent = levelNum * 20
   const levelLabelMap = ["超簡単", "簡単", "普通", "難しい", "鬼むず"]

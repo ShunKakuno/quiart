@@ -212,6 +212,23 @@ api.post("/quiz/:id/view", async (c) => {
   return c.json({ ok: true })
 })
 
+api.post("/choice/:quizId/:selectId/select", async (c) => {
+  const quizId = Number(c.req.param("quizId"))
+  const selectId = c.req.param("selectId")
+
+  await prisma.choice.updateMany({
+    where: {
+      quizId,
+      selectId,
+    },
+    data: {
+      selected: { increment: 1 },
+    },
+  })
+
+  return c.json({ ok: true })
+})
+
 api.get("/popularQuizRanking", async c => {
   const quizList = await prisma.quiz.findMany({
     include: {
