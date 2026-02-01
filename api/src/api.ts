@@ -80,6 +80,7 @@ api.post("/admin/quiz", async c => {
 
 api.get("/quizList", async c => {
   const quizList = await prisma.quiz.findMany({
+    where: { deleted: "0" },
     include: {
       quizLinks: {
         include: {
@@ -107,6 +108,7 @@ api.get("/quizList", async c => {
 api.get("/latestQuiz", async c => {
   const quizList = await prisma.quiz.findMany({
     where: {
+      deleted: "0" ,
       choices: {
         some: {}
       }
@@ -154,6 +156,7 @@ api.get("/quiz/:id", async c => {
   const q = await prisma.quiz.findFirst({
     where: {
       id,
+      deleted: "0",
       choices: {
         some: {}
       }
@@ -218,6 +221,7 @@ api.get("/popularQuizRanking", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       view: "desc",
     },
@@ -248,6 +252,7 @@ api.get("/unpopularQuizRanking", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       view: "desc",
     },
@@ -273,7 +278,10 @@ api.get("/article/:id", async c => {
   const id = Number(c.req.param("id"))
 
   const article = await prisma.article.findUnique({
-    where: { id },
+    where: { 
+      id ,
+      deleted: "0" 
+    },
     include: {
       articleLinks: {
         include: {
@@ -301,7 +309,10 @@ api.get("/article-with-quiz/:id", async c => {
   }
 
   const quizzes = await prisma.quiz.findMany({
-    where: { articleId },
+    where: { 
+      articleId,
+      deleted: "0" 
+    },
     select: {
       id: true,
       title: true,
@@ -365,6 +376,7 @@ api.get("/articleList", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       updatedAt: "desc",
     },
@@ -393,6 +405,7 @@ api.get("/latestArticle", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       createdAt: "desc",
     },
@@ -418,6 +431,7 @@ api.get("/category/:name/articles", async c => {
 
   const articles = await prisma.article.findMany({
     where: {
+      deleted: "0",
       articleLinks: {
         some: {
           category: {
@@ -440,6 +454,7 @@ api.get("/popularArticleRanking", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       view: "desc",
     },
@@ -469,6 +484,7 @@ api.get("/unpopularArticleRanking", async c => {
         },
       },
     },
+    where: { deleted: "0" },
     orderBy: {
       view: "asc",
     },
@@ -492,6 +508,39 @@ api.get("/unpopularArticleRanking", async c => {
 type QiitaItem = {
   id: string
 }
+
+api.delete("/admin/article/:id", async c => {
+  const id = Number(c.req.param("id"))
+
+  await prisma.article.update({
+    where: { id },
+    data: { deleted: "1" },
+  })
+
+  return c.json({ ok: true })
+})
+
+api.delete("/admin/term/:id", async c => {
+  const id = Number(c.req.param("id"))
+
+  await prisma.terms.update({
+    where: { id },
+    data: { deleted: "1" },
+  })
+
+  return c.json({ ok: true })
+})
+
+api.delete("/admin/quiz/:id", async c => {
+  const id = Number(c.req.param("id"))
+
+  await prisma.quiz.update({
+    where: { id },
+    data: { deleted: "1" },
+  })
+
+  return c.json({ ok: true })
+})
 
 api.post("/admin/article", async c => {
   try {
@@ -637,6 +686,7 @@ api.get("/admin/me", async (c) => {
 
 api.get("/terms", async c => {
   const terms = await prisma.terms.findMany({
+    where: { deleted: "0" },
     orderBy: {
       createdAt: "desc",
     },
@@ -672,7 +722,10 @@ api.get("/term/:id", async c => {
   const id = Number(c.req.param("id"))
 
   const t = await prisma.terms.findFirst({
-    where: { id },
+    where: { 
+      id,
+      deleted: "0"
+    },
     select: {
       id: true,
       term: true,
@@ -747,60 +800,60 @@ api.post("/admin/term", async c => {
   return c.json(createTerm, 201)
 })
 
-api.get("/article/:id/categories", async c => {
-  const articleId = Number(c.req.param("id"))
+// api.get("/article/:id/categories", async c => {
+//   const articleId = Number(c.req.param("id"))
 
-  const links = await prisma.articleCategory.findMany({
-    where: { articleId },
-    include: {
-      category: true,
-    },
-  })
+//   const links = await prisma.articleCategory.findMany({
+//     where: { articleId },
+//     include: {
+//       category: true,
+//     },
+//   })
 
-  const categories = links.map(l => l.category.name)
+//   const categories = links.map(l => l.category.name)
 
-  return c.json(categories)
-})
+//   return c.json(categories)
+// })
 
-api.get("/quiz/:id/categories", async c => {
-  const quizId = Number(c.req.param("id"))
+// api.get("/quiz/:id/categories", async c => {
+//   const quizId = Number(c.req.param("id"))
 
-  const links = await prisma.quizCategory.findMany({
-    where: { quizId },
-    include: {
-      category: true,
-    },
-  })
+//   const links = await prisma.quizCategory.findMany({
+//     where: { quizId },
+//     include: {
+//       category: true,
+//     },
+//   })
 
-  const categories = links.map(l => l.category.name)
+//   const categories = links.map(l => l.category.name)
 
-  return c.json(categories)
-})
+//   return c.json(categories)
+// })
 
-api.get("/category/:name/quizzes", async c => {
-  const name = c.req.param("name")
+// api.get("/category/:name/quizzes", async c => {
+//   const name = c.req.param("name")
 
-  const quizzes = await prisma.quiz.findMany({
-    where: {
-      quizLinks: {
-        some: {
-          category: {
-            name,
-          },
-        },
-      },
-    },
-  })
+//   const quizzes = await prisma.quiz.findMany({
+//     where: {
+//       quizLinks: {
+//         some: {
+//           category: {
+//             name,
+//           },
+//         },
+//       },
+//     },
+//   })
 
-  return c.json(quizzes)
-})
+//   return c.json(quizzes)
+// })
 
-api.get("/categories", async c => {
-  const categories = await prisma.category.findMany({
-    orderBy: { name: "asc" },
-  })
+// api.get("/categories", async c => {
+//   const categories = await prisma.category.findMany({
+//     orderBy: { name: "asc" },
+//   })
 
-  return c.json(categories)
-})
+//   return c.json(categories)
+// })
 
 export default app

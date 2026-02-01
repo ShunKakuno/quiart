@@ -16,6 +16,9 @@ export function AdminDashboard() {
             <Link to="/admin/postArticle">ブログ記事作成</Link>
             <Link to="/admin/createQuiz">クイズ作成</Link>
             <Link to="/admin/createTerm">用語作成</Link>
+            <Link to="/admin/articleList">記事一覧</Link>
+            <Link to="/admin/quizList">クイズ一覧</Link>
+            <Link to="/admin/termList">用語一覧</Link>
         <button onClick={logout} style={{ marginTop: 20, padding: 10 }}>ログアウト</button>
         </div>
     </div>

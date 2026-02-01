@@ -7,7 +7,7 @@ export type Choice = {
 }
 
 export type Quiz = {
-  id: string
+  id: number
   title: string
   categories: string[]
   level: string
