@@ -52,7 +52,7 @@ export function CreateQuiz() {
       <div className={styles.createQuiz}>
         {/* タイトル */}
         <h3>タイトル</h3>
-        <input
+        <textarea
           placeholder="タイトル"
           value={form.title}
           onChange={e => setForm({ ...form, title: e.target.value })}
@@ -71,14 +71,6 @@ export function CreateQuiz() {
           <option value="4">Lv.4（難しい）</option>
           <option value="5">Lv.5（鬼むず）</option>
         </select>
-
-        {/* 解説 */}
-        <h3>解説</h3>
-        <textarea
-          placeholder="解説"
-          value={form.explanation}
-          onChange={e => setForm({ ...form, explanation: e.target.value })}
-        />
 
         {/* 選択肢 */}
         <h3>選択肢</h3>
@@ -101,6 +93,14 @@ export function CreateQuiz() {
             </div>
           ))}
         </div>
+
+        {/* 解説 */}
+        <h3>解説</h3>
+        <textarea
+          placeholder="解説"
+          value={form.explanation}
+          onChange={e => setForm({ ...form, explanation: e.target.value })}
+        />
 
         {/* カテゴリ */}
         <h3>カテゴリ</h3>
