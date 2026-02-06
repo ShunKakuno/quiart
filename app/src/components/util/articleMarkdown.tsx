@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import remarkBreaks from "remark-breaks"
 import rehypeHighlight from "rehype-highlight"
 import "highlight.js/styles/github-dark.css"
 import "github-markdown-css/github-markdown.css"
@@ -32,7 +33,7 @@ export function ArticleMarkdown({ content }: Props) {
   return (
     <div className={`${styles.markdownBody} markdown-body`}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[[rehypeHighlight, { hljs }]]}
       >
         {content}
