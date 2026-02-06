@@ -10,6 +10,10 @@ type Props = {
   quiz: Quiz
 }
 
+type CSSVars = React.CSSProperties & {
+  "--rate"?: number
+}
+
 export function QuizCard({ quiz }: Props) {
   const [selected, setSelected] = useState<string | null>(null)
   const [showExplanation, setShowExplanation] = useState(false)
@@ -92,8 +96,11 @@ export function QuizCard({ quiz }: Props) {
               <div className={styles.correctRateWrap}>
                 <div
                   className={styles.rateCircle}
-                  style={{ ["--rate" as any]: correctRateRounded }}
-                >
+                  style={
+                    {
+                      "--rate": correctRateRounded,
+                    } as CSSVars
+                  }                >
                   <span className={styles.rateText}>{correctRateRounded}%</span>
                 </div>
                 <div className={styles.rateLabel}>正解率</div>
