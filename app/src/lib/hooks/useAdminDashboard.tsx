@@ -12,7 +12,6 @@ export function useAdminDashboard() {
     queryFn: async () => {
       try {
         const data = await api<Admin>("/admin/me")
-        console.log("data:", data)
         return data
       } catch (err) {
         // 認証エラー想定でログインへ
