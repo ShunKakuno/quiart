@@ -6,13 +6,14 @@ import styles from "@/css/postArticle.module.css"
 
 export function PostArticle() {
   const { data: admin, isLoading } = useAdminDashboard()
-  if (isLoading) return <p>読み込み中...</p>
-  if (!admin) return <p>ログインしてください</p>
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [tagsInput, setTagsInput] = useState("")
   const [tags, setTagss] = useState<string[]>([])
   const post = usePostArticle()
+
+  if (isLoading) return <p>読み込み中...</p>
+  if (!admin) return <p>ログインしてください</p>
 
   const addtags = () => {
     const t = tagsInput.trim()

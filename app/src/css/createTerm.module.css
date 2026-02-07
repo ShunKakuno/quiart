@@ -105,3 +105,26 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.suggestBox {
+  border: 1px solid #000000;
+  background: rgb(226, 226, 226);
+  margin-top: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.suggestItem {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestItem:hover {
+  background: #f0f0f0;
+}
+
+.duplicateWarning {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}

@@ -1,43 +1,40 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
-model Category {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+}
 
+model Category {
+  id           Int               @id @default(autoincrement())
+  name         String            @unique
+  articleLinks ArticleCategory[]
   quizLinks    QuizCategory[]
   termLinks    TermCategory[]
-  articleLinks ArticleCategory[]
 }
 
 model TermCategory {
   termId     Int
   categoryId Int
-
-  term     Terms    @relation(fields: [termId], references: [id])
-  category Category @relation(fields: [categoryId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+  term       Terms    @relation(fields: [termId], references: [id])
 
   @@id([termId, categoryId])
 }
 
 model Quiz {
-  id            Int @id @default(autoincrement())
   title         String
   level         String
-  explanation   String
+  createdAt     DateTime       @default(now())
   correctQuizId String
-  createdAt     DateTime  @default(now())
-  deleted       String @default("0")
+  explanation   String
+  deleted       String         @default("0")
+  view          Int            @default(0)
+  id            Int            @id @default(autoincrement())
   articleId     Int?
-  view          Int @default(0)
-
   choices       Choice[]
   quizLinks     QuizCategory[]
 }
@@ -45,40 +42,36 @@ model Quiz {
 model QuizCategory {
   quizId     Int
   categoryId Int
-
-  quiz       Quiz     @relation(fields: [quizId], references: [id])
   category   Category @relation(fields: [categoryId], references: [id])
+  quiz       Quiz     @relation(fields: [quizId], references: [id])
 
   @@id([quizId, categoryId])
 }
 
 model Choice {
-  id         Int   @id @default(autoincrement())
-  quizId     Int
-  selectId   String
-  text       String
-  selected   Int @default(0)
-
-  quiz   Quiz @relation(fields: [quizId], references: [id])
+  text     String
+  selectId String
+  selected Int    @default(0)
+  id       Int    @id @default(autoincrement())
+  quizId   Int
+  quiz     Quiz   @relation(fields: [quizId], references: [id])
 }
 
 model Article {
-  id         Int   @id @default(autoincrement())
-  qiitaId    String?
-  content    String
-  title      String
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @default(now())
-  deleted    String @default("0")
-  view       Int @default(0)
-
+  qiitaId      String?
+  content      String
+  title        String
+  createdAt    DateTime          @default(now())
+  deleted      String            @default("0")
+  updatedAt    DateTime          @default(now())
+  view         Int               @default(0)
+  id           Int               @id @default(autoincrement())
   articleLinks ArticleCategory[]
 }
 
 model ArticleCategory {
-  articleId  Int
   categoryId Int
-
+  articleId  Int
   article    Article  @relation(fields: [articleId], references: [id])
   category   Category @relation(fields: [categoryId], references: [id])
 
@@ -86,30 +79,30 @@ model ArticleCategory {
 }
 
 model Admin {
-  id           String   @id @default(cuid())
-  email        String   @unique
+  id           String         @id @default(cuid())
+  email        String         @unique
   passwordHash String
-  createdAt    DateTime @default(now())
-
-  sessions     AdminSession[] 
+  createdAt    DateTime       @default(now())
+  sessions     AdminSession[]
 }
 
 model AdminSession {
   id        String   @id @default(cuid())
   adminId   String
   expiresAt DateTime
-
-  admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
 }
 
 model Terms {
-  id          Int @id @default(autoincrement())
-  term        String
-  description String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now())
-  deleted     String @default("0")
-  view        Int @default(0)
+  id              Int            @id @default(autoincrement())
+  term            String
+  description     String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @default(now())
+  deleted         String         @default("0")
+  view            Int            @default(0)
+  term_normalized String?
+  termLinks       TermCategory[]
 
-  termLinks TermCategory[]
+  @@index([term_normalized(ops: raw("gin_trgm_ops"))], map: "idx_terms_trgm", type: Gin)
 }
