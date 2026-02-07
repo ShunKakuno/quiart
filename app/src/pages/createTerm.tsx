@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useCreateTerm } from "@/lib/hooks/useCreateTerm"
 import { useAdminDashboard } from "@/lib/hooks/useAdminDashboard"
+import { useAdminTermsRecommend } from "@/lib/hooks/useAdminTermsRecommend"
+import { normalizeForSearch } from "@/lib/normalizeForSearch"
 import styles from "@/css/createTerm.module.css"
 
 export function CreateTerm() {
@@ -9,6 +11,13 @@ export function CreateTerm() {
   const [categoryInput, setCategoryInput] = useState("")
   const [categories, setCategories] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
+
+  const { data } = useAdminTermsRecommend(term)
+  const recommends = data ?? []
+  const exactHit = recommends?.find(
+    r => normalizeForSearch(r.term) === normalizeForSearch(term)
+  )
+  const [isFocused, setIsFocused] = useState(false)
 
   const { data: admin } = useAdminDashboard()
   const post = useCreateTerm()
@@ -51,11 +60,38 @@ export function CreateTerm() {
 
         <div className={styles.field}>
         <label className={styles.label}>用語名</label>
-        <input
-            className={styles.input}
-            value={term}
-            onChange={e => setTerm(e.target.value)}
-        />
+<input
+  className={styles.input}
+  value={term}
+  onChange={e => {
+    setTerm(e.target.value)
+  }}
+  onFocus={() => setIsFocused(true)}
+  onBlur={() => setTimeout(() => setIsFocused(false), 150)}
+/>
+
+{isFocused && term.length >= 2 && recommends?.length > 0 && (
+  <div className={styles.suggestBox}>
+    {recommends.map(r => (
+      <div
+        key={r.id}
+        className={styles.suggestItem}
+        onClick={() => {
+          setTerm(r.term)
+        }}
+      >
+        {r.term}
+      </div>
+    ))}
+  </div>
+)}
+
+{exactHit && (
+  <p className={styles.duplicateWarning}>
+    ⚠ この用語は既に登録されています
+  </p>
+)}
+
         </div>
 
         <div className={styles.field}>
@@ -94,11 +130,11 @@ export function CreateTerm() {
         ))}
         </div>
 
-        <button
-        className={styles.submitButton}
-        onClick={handleSubmit}
-        disabled={loading}
-        >
+    <button
+    className={styles.submitButton}
+    onClick={handleSubmit}
+    disabled={loading || !!exactHit}
+    >
         {loading ? "作成中..." : "作成"}
         </button>
     </div>

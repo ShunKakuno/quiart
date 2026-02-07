@@ -784,6 +784,15 @@ api.post("/term/:id/view", async (c) => {
   return c.json({ ok: true })
 })
 
+function normalizeForSearch(text: string) {
+  return text
+    .normalize("NFKC")
+    .toUpperCase()
+    .replace(/[ぁ-ん]/g, s =>
+      String.fromCharCode(s.charCodeAt(0) + 0x60)
+    )
+}
+
 api.post("/admin/term", async c => {
   const body = await c.req.json()
   const {
@@ -795,6 +804,7 @@ api.post("/admin/term", async c => {
   const createTerm = await prisma.terms.create({
     data: {
       term,
+      term_normalized: normalizeForSearch(term),
       description,
     },
   })
@@ -815,6 +825,24 @@ api.post("/admin/term", async c => {
   }
 
   return c.json(createTerm, 201)
+})
+
+api.get("/admin/termRecommend", async c => {
+  const raw = c.req.query("q") ?? ""
+  if (raw.length < 2) return c.json([])
+
+  const q = normalizeForSearch(raw)
+
+  const terms = await prisma.terms.findMany({
+    where: {
+      term_normalized: {
+        contains: q,
+      },
+    },
+    take: 10,
+  })
+
+  return c.json(terms)
 })
 
 // api.get("/article/:id/categories", async c => {
