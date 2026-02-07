@@ -92,14 +92,10 @@ export function Top() {
         <h1>不人気記事ランキング</h1>
           {!isUnpopularArticleRankingLoading ? (
           <div>
-            {unpopularArticleRankingData!.map(a => (
-              <div key={a.id} className={styles.quizGrid}>
-                <ArticleRanking 
-                  articles={unpopularArticleRankingData || []}
-                  isLoading={isUnpopularArticleRankingLoading}
-                />
-              </div>
-            ))}
+            <ArticleRanking 
+              articles={unpopularArticleRankingData || []}
+              isLoading={isUnpopularArticleRankingLoading}
+            />
           </div>
         ) : (
           <p>Loading...</p>
