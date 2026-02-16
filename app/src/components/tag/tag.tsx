@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styles from "@/css/tag.module.css"
 
 type Categories = {
@@ -7,13 +8,20 @@ type Categories = {
 export function Tag({ categories }: Categories) {
   return (
     <>
-        {categories.length > 0 && (
+      {categories.length > 0 && (
         <div className={styles.tags}>
-            {categories.map(category => (
-            <span key={category} className={styles.tag}>{category}</span>
-            ))}
+          {categories.map(category => (
+            <Link
+              key={category}
+              to={`/category/${encodeURIComponent(category)}`}
+              className={styles.tag}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {category}
+            </Link>
+          ))}
         </div>
-        )}
+      )}
     </>
   )
 }

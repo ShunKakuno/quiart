@@ -17,6 +17,7 @@ import { AdminDashboard } from "@/pages/adminDashboard"
 import { TermsOfService } from "@/pages/termsOfService"
 import { PrivacyPolicy } from "@/pages/privacyPolicy"
 import { AppLayout } from "@/appLayout"
+import { SearchResult } from "@/pages/searchResult"
 
 export const Router = () => (
   <BrowserRouter>
@@ -29,6 +30,7 @@ export const Router = () => (
         <Route path="/article/:id" element={<Article />} />
         <Route path="/terms" element={<TermsList />} />
         <Route path="/term/:id" element={<Term />} />
+        <Route path="/category/:name" element={<SearchResult />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/admin/articleList" element={<AdminArticleList />} />

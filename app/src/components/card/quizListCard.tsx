@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import type { Quiz } from "@/lib/types/quiz"
 import { Tag } from "@/components/tag/tag"
 import { InlineMarkdown } from "@/components/util/inlineMarkdown"
@@ -9,8 +9,12 @@ type Props = {
 }
 
 export function QuizListCard({ item }: Props) {
+  const navigate = useNavigate()
   return (
-    <Link to={`/quiz/${item.id}`} className={styles.quizRankingCard}>
+    <div
+      className={styles.quizRankingCard}
+      onClick={() => navigate(`/quiz/${item.id}`)}
+    >
     <h2 className={styles.quizRankingTitle}><InlineMarkdown content={item.title} /></h2>
     <Tag categories={item.categories} />
     <div className={styles.quizRankingFooter}>
@@ -18,6 +22,6 @@ export function QuizListCard({ item }: Props) {
         作成日：{new Date(item.createdAt).toLocaleDateString()}
       </span>
     </div>
-  </Link>
+  </div>
   )
 }

@@ -522,6 +522,99 @@ api.get("/unpopularArticleRanking", async c => {
   return c.json(result)
 })
 
+api.get("/articles/category/:name", async (c) => {
+  const categoryName = c.req.param("name")
+
+  const category = await prisma.category.findFirst({
+    where: {
+      name: {
+        equals: categoryName,
+        mode: "insensitive",
+      },
+    },
+  })
+
+  if (!category) return c.json([])
+
+  const articles = await prisma.article.findMany({
+    where: {
+      deleted: "0",
+      articleLinks: {
+        some: {
+          categoryId: category.id,
+        },
+      },
+    },
+    include: {
+      articleLinks: {
+        include: {
+          category: true,
+        },
+      },
+    },
+  })
+
+  const result = articles.map(a => ({
+    id: a.id,
+    title: a.title,
+    content: a.content,
+    qiitaId: a.qiitaId ?? undefined,
+    createdAt: a.createdAt.toISOString(),
+    updatedAt: a.updatedAt.toISOString(),
+    view: a.view,
+    categories: a.articleLinks.map(l => l.category.name),
+  }))
+
+  return c.json(result)
+})
+
+api.get("/quiz/category/:name", async (c) => {
+  const categoryName = c.req.param("name")
+
+  const category = await prisma.category.findFirst({
+    where: {
+      name: {
+        equals: categoryName,
+        mode: "insensitive",
+      },
+    },
+  })
+
+  if (!category) return c.json([])
+
+  const quiz = await prisma.quiz.findMany({
+    where: {
+      deleted: "0",
+      quizLinks: {
+        some: {
+          categoryId: category.id,
+        },
+      },
+    },
+    include: {
+      quizLinks: {
+        include: {
+          category: true,
+        },
+      },
+    },
+  })
+
+  const result = quiz.map(q => ({
+    id: q.id,
+    title: q.title,
+    level: q.level,
+    explanation: q.explanation,
+    correctQuizId: q.correctQuizId,
+    createdAt: q.createdAt.toISOString(),
+    deleted: q.deleted,
+    view: q.view,
+    categories: q.quizLinks.map(l => l.category.name),
+  }))
+
+  return c.json(result)
+})
+
 type QiitaItem = {
   id: string
 }
@@ -844,61 +937,5 @@ api.get("/admin/termRecommend", async c => {
 
   return c.json(terms)
 })
-
-// api.get("/article/:id/categories", async c => {
-//   const articleId = Number(c.req.param("id"))
-
-//   const links = await prisma.articleCategory.findMany({
-//     where: { articleId },
-//     include: {
-//       category: true,
-//     },
-//   })
-
-//   const categories = links.map(l => l.category.name)
-
-//   return c.json(categories)
-// })
-
-// api.get("/quiz/:id/categories", async c => {
-//   const quizId = Number(c.req.param("id"))
-
-//   const links = await prisma.quizCategory.findMany({
-//     where: { quizId },
-//     include: {
-//       category: true,
-//     },
-//   })
-
-//   const categories = links.map(l => l.category.name)
-
-//   return c.json(categories)
-// })
-
-// api.get("/category/:name/quizzes", async c => {
-//   const name = c.req.param("name")
-
-//   const quizzes = await prisma.quiz.findMany({
-//     where: {
-//       quizLinks: {
-//         some: {
-//           category: {
-//             name,
-//           },
-//         },
-//       },
-//     },
-//   })
-
-//   return c.json(quizzes)
-// })
-
-// api.get("/categories", async c => {
-//   const categories = await prisma.category.findMany({
-//     orderBy: { name: "asc" },
-//   })
-
-//   return c.json(categories)
-// })
 
 export default app

@@ -7,8 +7,8 @@ import {
   useUnpopularArticleRanking 
 } from "@/lib/hooks/useTop"
 import { QuizCard } from "@/components/card/quizCard"
-import { ArticleRanking } from "@/components/ranking/articleRanking"
-import { QuizRanking } from "@/components/ranking/quizRanking"
+import { ArticleRanking } from "@/components/ranking/ArticleRanking"
+import { QuizRanking } from "@/components/ranking/QuizRanking"
 import { PageLayout } from "@/pageLayout"
 import styles from "@/css/top.module.css"
 
