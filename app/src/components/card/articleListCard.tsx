@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import type { Article } from "@/lib/types/article"
 import { Tag } from "@/components/tag/tag"
 import { InlineMarkdown } from "@/components/util/inlineMarkdown"
@@ -9,15 +9,24 @@ type Props = {
 }
 
 export function ArticleListCard({ item }: Props) {
+  const navigate = useNavigate()
+
   return (
-    <Link to={`/article/${item.id}`} className={styles.articleRankingCard}>
-      <h2 className={styles.articleRankingTitle}><InlineMarkdown content={item.title} /></h2>
+    <div
+      className={styles.articleRankingCard}
+      onClick={() => navigate(`/article/${item.id}`)}
+    >
+      <h2 className={styles.articleRankingTitle}>
+        <InlineMarkdown content={item.title} />
+      </h2>
+
       <Tag categories={item.categories} />
+
       <div className={styles.articleRankingFooter}>
         <span className={styles.articleRankingDate}>
           更新日：{new Date(item.updatedAt).toLocaleDateString()}
         </span>
       </div>
-    </Link>
+    </div>
   )
 }
