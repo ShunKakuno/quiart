@@ -15,6 +15,7 @@ export function ArticleListCard({ item }: Props) {
     <div
       className={styles.articleRankingCard}
       onClick={() => navigate(`/article/${item.id}`)}
+      style={{ cursor: "pointer" }}
     >
       <h2 className={styles.articleRankingTitle}>
         <InlineMarkdown content={item.title} />

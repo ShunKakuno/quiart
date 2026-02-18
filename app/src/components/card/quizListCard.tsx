@@ -14,6 +14,7 @@ export function QuizListCard({ item }: Props) {
     <div
       className={styles.quizRankingCard}
       onClick={() => navigate(`/quiz/${item.id}`)}
+      style={{ cursor: "pointer" }}
     >
     <h2 className={styles.quizRankingTitle}><InlineMarkdown content={item.title} /></h2>
     <Tag categories={item.categories} />
