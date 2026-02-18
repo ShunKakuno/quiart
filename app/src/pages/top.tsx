@@ -22,84 +22,78 @@ export function Top() {
 
   return (
     <PageLayout>
-      <div>
-        <h1>最新のクイズ</h1>
-        {!isLatestQuizLoading ? (
-          <div>
-            {latestQuizData!.map(q => (
-              <div key={q.id} className={styles.quizGrid}>
-                <QuizCard 
-                  quiz={q}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <h1>最新の記事</h1>
-          {!isLatestArticleLoading ? (
-          <div>
-              <div className={styles.quizGrid}>
+      <div className={styles.list}>
+        <div>
+          <h1>最新のクイズ</h1>
+          {!isLatestQuizLoading ? (
+            <div>
+              {latestQuizData!.map(q => (
+                <div key={q.id} className={styles.quizGrid}>
+                  <QuizCard 
+                    quiz={q}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <h1>最新の記事</h1>
+            {!isLatestArticleLoading ? (
+            <div>
                 <ArticleRanking 
                   articles={latestArticleData || []}
                   isLoading={isLatestArticleLoading}
                 />
-              </div>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <h1>クイズアクセス数ランキング</h1>
-          {!isPopularQuizRankingLoading ? (
-          <div>
-            <div className={styles.quizGrid}>
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <h1>クイズアクセス数ランキング</h1>
+            {!isPopularQuizRankingLoading ? (
+            <div>
               <QuizRanking 
                 quizzes={popularQuizRankingData || []}
                 isLoading={isPopularQuizRankingLoading}
               />
             </div>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <h1>記事アクセス数ランキング</h1>
-          {!isPopularArticleRankingLoading ? (
-          <div>
-              <div className={styles.quizGrid}>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <h1>記事アクセス数ランキング</h1>
+            {!isPopularArticleRankingLoading ? (
+            <div>
                 <ArticleRanking 
                   articles={popularArticleRankingData || []}
                   isLoading={isPopularArticleRankingLoading}
                 />
-              </div>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <h1>不人気クイズランキング</h1>
-          {!isUnpopularQuizRankingLoading ? (
-          <div>
-            <div className={styles.quizGrid}>
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <h1>不人気クイズランキング</h1>
+            {!isUnpopularQuizRankingLoading ? (
+            <div>
               <QuizRanking 
                 quizzes={unpopularQuizRankingData || []}
                 isLoading={isUnpopularQuizRankingLoading}
               />
             </div>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <h1>不人気記事ランキング</h1>
-          {!isUnpopularArticleRankingLoading ? (
-          <div>
-            <ArticleRanking 
-              articles={unpopularArticleRankingData || []}
-              isLoading={isUnpopularArticleRankingLoading}
-            />
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
+          ) : (
+            <p>Loading...</p>
+          )}
+          <h1>不人気記事ランキング</h1>
+            {!isUnpopularArticleRankingLoading ? (
+            <div>
+              <ArticleRanking 
+                articles={unpopularArticleRankingData || []}
+                isLoading={isUnpopularArticleRankingLoading}
+              />
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
       </div>
     </PageLayout>
   )

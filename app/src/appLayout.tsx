@@ -13,22 +13,21 @@ export function AppLayout() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <div className={styles.logo}>eHZ</div>
-      </header>
+        <div className={styles.headerInner}>
+          <div className={styles.logo}>eHZ</div>
 
-      <div className={styles.body}>
-        <aside className={styles.sidebar}>
-          <nav>
+          <nav className={styles.topNav}>
             <Link to="/">トップ</Link>
             <Link to="/quizList">クイズ一覧</Link>
             <Link to="/terms">用語集</Link>
             <Link to="/articleList">ブログ記事一覧</Link>
           </nav>
-        </aside>
-        <main className={styles.content}>
-          <Outlet />
-        </main>
-      </div>
+        </div>
+      </header>
+
+      <main className={`${styles.content} content`}>
+        <Outlet />
+      </main>
     </div>
   )
 }

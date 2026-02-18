@@ -10,66 +10,83 @@
 
 /* ヘッダー */
 .header {
-  height: 64px;
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* ヘッダー中身 */
+.headerInner {
+  height: 64px;
   display: flex;
   align-items: center;
+  gap: 32px;
   padding: 0 28px;
 }
 
+/* ロゴ */
 .logo {
   font-size: 22px;
   font-weight: 700;
-  color: #6366f1; /* インディゴ */
+  color: #6366f1;
+  flex-shrink: 0;
 }
 
-/* 中身 */
-.body {
-  flex: 1;
+/* 上部ナビ */
+.topNav {
   display: flex;
-  overflow: hidden;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-/* サイドバー */
-.sidebar {
-  width: 240px;
-  background: #eef2ff;
-  border-right: 1px solid #e0e7ff;
-  padding: 20px 12px;
+.topNav::-webkit-scrollbar {
+  display: none;
 }
 
-.sidebar nav {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sidebar a {
+.topNav a {
+  white-space: nowrap;
   color: #4338ca;
   text-decoration: none;
-  padding: 12px 16px;
-  border-radius: 12px;
   font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
   transition: all 0.15s ease;
-  background: rgba(255,255,255,0.7);
 }
 
-.sidebar a:hover {
+.topNav a:hover {
   background: #6366f1;
   color: white;
-  transform: translateX(4px);
 }
 
+/* コンテンツ */
 .content {
   flex: 1;
   padding: 32px;
   overflow-y: auto;
 }
 
-.loading {
-  text-align: center;
-  padding: 32px;
-  font-size: 1rem;
-  color: #666;
+/* ===== モバイル対応 ===== */
+@media (max-width: 768px) {
+
+  .headerInner {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .topNav {
+    width: 100%;
+    padding-bottom: 4px;
+  }
+
+  .topNav a {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .content {
+    padding: 20px;
+  }
 }

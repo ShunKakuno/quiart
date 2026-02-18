@@ -10,7 +10,7 @@ export function QuizList() {
 
   return (
     <PageLayout>
-      <div className={styles.quizGrid}>
+      <div className={styles.quizList}>
         {data!.map(quiz => (
           <QuizListCard key={quiz.id} item={quiz} />
         ))}

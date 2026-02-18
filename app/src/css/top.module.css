@@ -5,3 +5,12 @@
 .articleGrid {
     margin-bottom: 24px;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+}
