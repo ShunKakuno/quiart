@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Quiz } from "@/lib/types/quiz"
 import { Tag } from "@/components/tag/tag"
+import { Favorite } from "@/components/favorite/favorite"
 import { ChoiceGrid } from "@/components/grid/choiceGrid"
 import { useIncrementChoiceSelect } from "@/lib/hooks/useIncrementChoiceSelect"
 import styles from "@/css/quizCard.module.css"
@@ -54,6 +55,7 @@ export function QuizCard({ quiz }: Props) {
       <div className={styles.tagSpan}>
         <Tag categories={quiz.categories} />
       </div>
+      <Favorite category="quiz" id={String(quiz.id)} />
       <div className={styles.difficultyWrap}>
         <span className={styles.difficultyLabel}>難易度</span>
 

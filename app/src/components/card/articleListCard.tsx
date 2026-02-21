@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import type { Article } from "@/lib/types/article"
 import { Tag } from "@/components/tag/tag"
+import { Favorite } from "@/components/favorite/favorite"
 import { InlineMarkdown } from "@/components/util/inlineMarkdown"
 import styles from "@/css/articleListCard.module.css"
 
@@ -24,6 +25,7 @@ export function ArticleListCard({ item }: Props) {
       <Tag categories={item.categories} />
 
       <div className={styles.articleRankingFooter}>
+        <Favorite category="article" id={String(item.id)} />
         <span className={styles.articleRankingDate}>
           更新日：{new Date(item.updatedAt).toLocaleDateString()}
         </span>

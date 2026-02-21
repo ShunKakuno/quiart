@@ -1,0 +1,12 @@
+.heart {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.heart:hover {
+  transform: scale(1.25);
+}

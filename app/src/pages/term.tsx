@@ -4,6 +4,7 @@ import { useTerm } from "@/lib/hooks/useTerm"
 import { PageLayout } from "@/pageLayout"
 import { useIncrementTermView } from "@/lib/hooks/useIncrementTermView"
 import { Tag } from "@/components/tag/tag"
+import { Favorite } from "@/components/favorite/favorite"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import { ArticleMarkdown } from "@/components/util/articleMarkdown"
 import styles from "@/css/term.module.css"
@@ -28,6 +29,7 @@ export function Term() {
         <div className={styles.tagSpan}>
           <Tag categories={term.categories} />
         </div>
+                  <Favorite category="article" id={String(id)} />
         <div className={styles.termDescription}>
           <ArticleMarkdown content={term.description} />
         </div>

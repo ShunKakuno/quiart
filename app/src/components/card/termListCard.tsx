@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import type { Term } from "@/lib/types/term"
 import { Tag } from "@/components/tag/tag"
+import { Favorite } from "@/components/favorite/favorite"
 import { InlineMarkdown } from "@/components/util/inlineMarkdown"
 import styles from "@/css/termListCard.module.css"
 
@@ -18,6 +19,7 @@ export function TermListCard({ item }: Props) {
     >
       <h2 className={styles.termsTitle}><InlineMarkdown content={item.term} /></h2>
       <Tag categories={item.categories} />
+      <Favorite category="term" id={String(item.id)} />
       <div className={styles.termFooter}>
         <span className={styles.termDate}>
           作成日：{new Date(item.createdAt).toLocaleDateString()}

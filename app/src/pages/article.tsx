@@ -6,6 +6,7 @@ import { useIncrementArticleView } from "@/lib/hooks/useIncrementArticleView"
 import { PageLayout } from "@/pageLayout"
 import { QuizCard } from "@/components/card/quizCard"
 import { Tag } from "@/components/tag/tag"
+import { Favorite } from "@/components/favorite/favorite"
 import { ArticleMarkdown } from "@/components/util/articleMarkdown"
 import { HatenaBookMark } from "@/components/util/hatenabookmark"
 import styles from "@/css/article.module.css"
@@ -48,7 +49,10 @@ export function Article() {
         <p className={styles.articleDate}>
           更新日: {article.updatedAt.slice(0, 10)}
         </p>
-        <Tag categories={article.categories} />
+        <div className={styles.tagSpan}>
+          <Tag categories={article.categories} />
+        </div>
+        <Favorite category="article" id={String(id)} />
         <div className={styles.articleContent}>
           <ArticleMarkdown content={article.content} />
         </div>
