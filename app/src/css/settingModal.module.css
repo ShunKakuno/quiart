@@ -1,0 +1,118 @@
+/* 背景オーバーレイ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* モーダル本体 */
+.modal {
+  background: #ffffff;
+  width: 420px;
+  max-width: 90%;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  animation: fadeIn 0.2s ease-out;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 入力エリア */
+.inputRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #888;
+}
+
+/* 追加ボタン */
+.addButton {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.addButton:hover {
+  opacity: 0.8;
+}
+
+/* タグ表示エリア */
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* タグ */
+.tag {
+  background: #f2f2f2;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.tag:hover {
+  background: #e0e0e0;
+  transform: scale(1.05);
+}
+
+/* 閉じるボタン */
+.closeButton {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.closeButton:hover {
+  background: #ddd;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

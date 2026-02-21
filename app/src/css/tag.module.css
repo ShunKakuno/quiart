@@ -34,3 +34,9 @@
   transform: translateY(0);
   box-shadow: 0 1px 3px rgba(3, 105, 161, 0.2);
 }
+
+.customTag {
+  font-weight: 700;
+  border: 2px solid #6366f1;
+  background: #eef2ff;
+}

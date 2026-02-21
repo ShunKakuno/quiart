@@ -37,6 +37,9 @@
   gap: 20px;
   overflow-x: auto;
   scrollbar-width: none;
+  align-items: center;
+
+  width: 100%;
 }
 
 .topNav::-webkit-scrollbar {
@@ -89,4 +92,52 @@
   .content {
     padding: 20px;
   }
+}
+
+/* 設定ボタン */
+.settingButton {
+  margin-left: auto;   /* ← 追加 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: transparent;
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+/* hover */
+.settingButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* 押した時 */
+.settingButton:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* アイコン */
+.settingIcon {
+  font-size: 20px;
+  color: #444;
+  transition:
+    transform 0.3s ease,
+    color 0.2s ease;
+}
+
+/* hover時に回転 */
+.settingButton:hover .settingIcon {
+  transform: rotate(90deg);
+  color: #111;
 }
