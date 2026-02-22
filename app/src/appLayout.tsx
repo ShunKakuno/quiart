@@ -24,6 +24,7 @@ export function AppLayout() {
             <Link to="/quizList">クイズ一覧</Link>
             <Link to="/terms">用語集</Link>
             <Link to="/articleList">ブログ記事一覧</Link>
+            <Link to="/maypage">マイページ</Link>
             <button
               className={styles.settingButton}
               onClick={() => setIsSettingOpen(true)}
