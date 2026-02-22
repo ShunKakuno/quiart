@@ -16,6 +16,7 @@ import { AdminLogin } from "@/pages/adminLogin"
 import { AdminDashboard } from "@/pages/adminDashboard"
 import { TermsOfService } from "@/pages/termsOfService"
 import { PrivacyPolicy } from "@/pages/privacyPolicy"
+import { Mypage } from "@/pages/mypage"
 import { AppLayout } from "@/appLayout"
 import { SearchResult } from "@/pages/searchResult"
 
@@ -33,6 +34,7 @@ export const Router = () => (
         <Route path="/category/:name" element={<SearchResult />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/maypage" element={<Mypage />} />
         <Route path="/admin/articleList" element={<AdminArticleList />} />
         <Route path="/admin/quizList" element={<AdminQuizList />} />
         <Route path="/admin/termList" element={<AdminTermList />} />
